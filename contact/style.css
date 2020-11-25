@@ -1,15 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap');
 .navbar{
-    background-color: white!important;
-    margin-bottom: 0px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
-.navbar-brand{
-    padding-left: 10%;
-}
-.navbar-nav{
-    padding-left: 30vw;
-    margin-right: 10px;
+.wrapper h1{
+    padding: 20px 0px;
 }
 
 .navbar-nav .nav-item{}
