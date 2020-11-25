@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.i-navigation{
+    height: 60px;
+    position: fixed;
+    background: #1c1e2b;
+    display: block;
+    width: 100%;
+    z-index: 5;
+    box-sizing: inherit;
+}
+
+.logo-text{
+    text-decoration: none;
+}
+
+.logo-text span{
+    font-family: "Unisect Vnu";
+    line-height: 50px;
+    font-size: 30px;
+    padding: 8px 20px;
+    font-weight: bolder;
+    color: #ffc600;
+}
+
+header .i-header{
+    width: 100%;
+    background: #484848;
+    position: relative;
+}
+
+.i-header img{
+    height: 600px;
+}
+
+.i-number{
+    
+}
