@@ -74,10 +74,153 @@ header .i-header{
     font-family: "Maven Pro Bold";
 }
 
+.i-product{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.product-content{
+    background-color: #ffc600;
+}
+
+.mySlides{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: none;
+}
+
+.product-title{
+    display: block;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.box-product{
+    height: 600px;
+    position: relative;
+}
+
+.product-item-1{
+    -moz-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    top: 50px;
+    animation: floating 5s infinite;
+}
+
 @media (max-width: 767.98px) and (min-width: 576px){
     .number-circle {
         width: 100px;
         height: 100px;
     }
+    .product-content{
+        order: 2;
+    }
+
+
 }
 
+.product-nav{
+    padding: 30px;
+    width: 100%;
+}
+
+.h1ref{
+    color: white;
+    text-decoration: none;
+    box-sizing: inherit;
+    width: 100%;
+    text-align: center;
+}
+
+.text-steelgray{
+    font-family: 'Courier New', Courier, monospace;
+    color: orange;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    padding-top: 40px;
+    font-size: 55px;
+    font-weight: bold;
+}
+
+.product-text{
+    width: 100%;
+    font-size: 16px;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.product-list{
+    display: block;
+    list-style-type: disc;
+}
+
+.demo{
+    background-color: white;
+    height: 80px;
+    align-items: center; 
+    justify-content: center;
+    margin-bottom: 40px;
+    padding-left: 50px;
+}
+
+.demo img{
+    width: 60px;
+    height: 55px;
+    margin-bottom: 20px;
+    padding-top: 30px;
+}
+
+.active,
+.demo:hover{
+    background-color:  orange;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+
+
+.fa-youtube {
+    color: red;
+    margin-left: 10px;
+}
+.fa-youtube:hover {
+    color: #aa0000;
+    margin-left: 10px;
+}
+footer{
+    background-color: #31384d;
+}
+
+.product-title-2{
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    padding-left: 20px;
+}
+
+.i-aboutus{
+    background-color: #31384d;
+    margin: 0;
+    padding-top: 50px;
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+.black-bg{
+    background-color: #31384d; 
+}
