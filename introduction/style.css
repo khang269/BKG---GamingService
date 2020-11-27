@@ -1,6 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
 
-
+.dropdown-toggle:hover {
+    border-bottom: 4px solid #e85509;
+}
+.dropdown-toggle::after { 
+    /* content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin: 0 5px;
+    border-width: 0 3px 3px 0;
+    border-style: solid;
+    transform: rotate(135deg); */
+    border: solid;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 2px;
+    margin-left: 5px;
+    transform: rotate(45deg);
+} 
+.dropdown {
+    padding-top: 10px;
+    font-size: 20px;
+}
 .carousel-item img{
     max-height: 300px;
 }
