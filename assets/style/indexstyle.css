@@ -51,11 +51,6 @@ header .i-header{
     position: relative;
 }
 
-.i-header img{
-    height: 600px;
-    background-size: contain;
-}
-
 .i-number{
     width: 100%;
     background-image: url("../img/number-background.png");
@@ -64,26 +59,25 @@ header .i-header{
 }
 
 .number-circle{
-    max-width: 100%;
-    width: 200px;
-    height: 200px;
+    width: 15vw;
+    height: 15vw;
     display: block;
     margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
 .number-circle-inner{
     max-width: 100%;
-    width: 200px;
-    height: 200px;
-    border: 5px solid rgba(255,186,14,0.5);
+    width: 15vw;
+    height: 15vw;
+    border: 3px solid rgba(255,186,14,0.5);
     box-shadow: 0 0 0 10px rgba(0,0,0,0.2);
     border-radius: 100%;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
     background: rgba(0,0,0,0.5);
-    font-size: 50px;
+    font-size: 4vw;
     color: #ffba0e;
     font-family: "Maven Pro Bold";
 }
@@ -134,15 +128,6 @@ header .i-header{
 }
 
 @media (max-width: 767.98px) and (min-width: 576px){
-    .number-circle {
-        width: 100px;
-        height: 100px;
-    }
-    .product-content{
-        order: 2;
-    }
-
-
 }
 
 .product-nav{
@@ -192,12 +177,12 @@ header .i-header{
     align-items: center; 
     justify-content: center;
     margin-bottom: 40px;
-    padding-left: 50px;
+    padding-left: 2vw;
 }
 
 .demo img{
-    width: 60px;
-    height: 55px;
+    width: 3.5vw;
+    height: auto;
     margin-bottom: 20px;
     padding-top: 30px;
 }
@@ -226,9 +211,9 @@ footer{
 }
 
 .product-title-2{
-    font-size: 20px;
+    font-size: 2vw;
     font-family: 'Courier New', Courier, monospace;
-    padding-left: 20px;
+    padding-left: 2vw;
 }
 
 .i-aboutus{
