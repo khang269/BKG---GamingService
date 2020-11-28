@@ -1,8 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap');
 
-.dropdown-toggle:hover {
-    border-bottom: 4px solid #e85509;
+
+body {
+    font-family: 'Exo 2', sans-serif !important;
 }
+
+.center {
+    text-align: center;
+}
+
 .dropdown-toggle::after { 
     /* content: "";
     display: inline-block;
@@ -19,12 +25,27 @@
     margin-left: 5px;
     transform: rotate(45deg);
 } 
+
 .dropdown {
     padding-top: 10px;
     font-size: 20px;
+    border-bottom: 4px solid transparent;
+    transition: 0.4s;
 }
+
+.dropdown:hover {
+    border-bottom: 4px solid#875AE3;
+}
+
+.dropdown-item:hover{
+    color: white;
+    text-shadow: 0.5px 0.5px #888;
+    background-color: #30CFD0;
+}
+
 .carousel-item img{
-    max-height: 300px;
+    height: 300px;
+    width: 300px;
 }
 .carousel-caption {
     position: relative;
@@ -35,52 +56,70 @@
     color: white;
 }
 .infomation{
-    background-image: url("images/bg.jpg");
+    background-image: url("images/header1.png");
     padding-top: 5em;
     background-repeat: no-repeat;
     background-size: cover;
     padding-bottom: 1em;
 }
-.header{
+
+.navbar-brand img {
+    height: 75px;
+}
+
+.header {
+    background-image: url("images/header1.png");
     height: 140px;
-    padding: 3%;
-    padding-left: 7%;
-    background-image: url("images/header.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    padding-top: 25px;
+    color: #FFF;
+    text-shadow: 2px 2px #888;
 }
-.header h1{
-    /* background-color: red; */
-    margin-left: 0;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    color: white;
+
+.navbar-brand img {
+    height: 75px;
 }
+
+.navbar-brand a {
+    color: #FFF;
+    text-shadow: 2px 2px #888;
+}
+
 .linknav{
     padding-left: 1em;
 }
-.linknav a{color: white;}
+.linknav a{
+    color: white;
+    text-shadow: 1px 1px #888;
+}
+
 .mainnav:after{content: "";
     display: inline-block;
     width: 7px;
     height: 7px;
     margin: 0 5px;
     border: 2px solid;
-    border-color: #000 #000 transparent transparent;
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
+    border-color: #FFF #FFF transparent transparent;
     transform: rotate(45deg);
 }
-.introduce{
-    padding: 5em;
-    text-align: center;
+
+.introduction {
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
-.introduce * {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #5c5b5b;
+
+.introduction h1{
+    font-weight: 500;
+    color: #875AE3;
 }
+
+.introduction p {
+    padding-top: 20px;
+    font-size: 20px;
+    color: #444;
+}
+
 .fa-youtube {
     color: red;
     margin-left: 10px;
@@ -89,29 +128,34 @@
     color: #aa0000;
     margin-left: 10px;
 }
-footer{
-    background-color: #31384d;
+
+.footer-page{
+    background-color: #1c1e2b;
 }
+
+.footer-page a img{
+    width: 60px;
+    height: 60px;
+}
+
 .second-header{
     height: 140px;
     padding: 3%;
-    padding-left: 7%;
     background-color: white;
 }
 .second-header *{
-    color: #5c5b5b;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
+    font-weight: 500;
+    color: #875AE3;
 }
 .CD-wall{
-    background-image: url("images/bg.jpg");
+    background-image: url("images/header1.png");
     padding-top: 5em;
     background-repeat: no-repeat;
     background-size: cover;
     padding-bottom: 1em;
 }
 .my-btn{
-    background-color: #eb8934;
+    background-color: #875AE3;
     border: 0px;
 }
 .culture *{
@@ -120,10 +164,9 @@ footer{
     background-size: contain;
 }
 .tagname{
-    padding: 2em;
+    padding: 1em;
 }
 .fonttagname{
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 30pt;
     color: #5c5c5c;
@@ -142,17 +185,14 @@ footer{
 @media (max-width: 992px) {
 
   }
-@media (max-width: 768px) {
-    .culture img{
-        
-    }
-}
+
 @media (max-width: 576px) {
     .header{
         padding: 7%;
     }
     .second-header{
-        padding: 7%;
+        padding-top: 7%;
+        padding-bottom: 7%;
     }
 }
 

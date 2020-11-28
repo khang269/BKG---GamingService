@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap');
 
-.dropdown:hover {
-    border-bottom: 4px solid #e85509;
+
+body {
+    font-family: 'Exo 2', sans-serif !important;
 }
+
+.center {
+    text-align: center;
+}
+
 .dropdown-toggle::after { 
     /* content: "";
     display: inline-block;
@@ -18,10 +25,55 @@
     margin-left: 5px;
     transform: rotate(45deg);
 } 
+
 .dropdown {
     padding-top: 10px;
     font-size: 20px;
+    border-bottom: 4px solid transparent;
+    transition: 0.4s;
 }
+
+.dropdown:hover {
+    border-bottom: 4px solid #875AE3;
+}
+
+.dropdown-item:hover{
+    color: white;
+    text-shadow: 0.5px 0.5px #888;
+    background-color: #30CFD0;
+}
+
+.navbar-brand img {
+    height: 75px;
+}
+
+.navbar-brand img {
+    height: 75px;
+}
+
+.navbar-brand a {
+    color: #FFF;
+    text-shadow: 2px 2px #888;
+}
+
+.linknav{
+    padding-left: 1em;
+}
+.linknav a{
+    color: white;
+    text-shadow: 1px 1px #888;
+}
+
+.mainnav:after{content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin: 0 5px;
+    border: 2px solid;
+    border-color: #FFF #FFF transparent transparent;
+    transform: rotate(45deg);
+}
+
 .i-navigation{
     height: 60px;
     position: fixed;
@@ -42,20 +94,22 @@
     font-size: 30px;
     padding: 8px 20px;
     font-weight: bolder;
-    color: #ffc600;
+    color: #30CFD0;
 }
 
-header .i-header{
+.i-header{
     width: 100%;
+    margin: auto;
     background: #484848;
     position: relative;
 }
 
 .i-number{
+    padding-top: 50px;
     width: 100%;
-    background-image: url("../img/number-background.png");
+    background-image: url("../img/number-banner.png");
     background-size: cover;
-    min-height: 400px;
+    min-height: 500px;
 }
 
 .number-circle{
@@ -70,21 +124,27 @@ header .i-header{
     max-width: 100%;
     width: 15vw;
     height: 15vw;
-    border: 3px solid rgba(255,186,14,0.5);
+    border: 5px solid#30CFD0;
     box-shadow: 0 0 0 10px rgba(0,0,0,0.2);
     border-radius: 100%;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
     background: rgba(0,0,0,0.5);
-    font-size: 4vw;
-    color: #ffba0e;
-    font-family: "Maven Pro Bold";
+    font-size: 6vw;
+}
+
+.label {
+    padding-top: 8px;
+    padding-bottom: 10px;
+    font-size: 1.5vw;
 }
 
 .circle-text{
-    font-weight: bold;
-    font-family: "Maven Pro Bold";
+    text-transform: uppercase;
+	background: linear-gradient(to left, #30CFD0 0%,#875AE3 90%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .i-product{
@@ -94,7 +154,7 @@ header .i-header{
 }
 
 .product-content{
-    background-color: #ffc600;
+    background-image: linear-gradient(#875AE3,  #30CFD0);
 }
 
 .mySlides{
@@ -111,6 +171,7 @@ header .i-header{
     padding-bottom: 20px;
     font-size: 20px;
     font-family: 'Courier New', Courier, monospace;
+    color: #FFF;
 }
 
 .box-product{
@@ -145,7 +206,7 @@ header .i-header{
 
 .text-steelgray{
     font-family: 'Courier New', Courier, monospace;
-    color: orange;
+    color: #875AE3;
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
     padding-top: 40px;
@@ -178,18 +239,17 @@ header .i-header{
     justify-content: center;
     margin-bottom: 40px;
     padding-left: 2vw;
+    padding-top: 0.75vw;
 }
 
 .demo img{
-    width: 3.5vw;
-    height: auto;
-    margin-bottom: 20px;
-    padding-top: 30px;
+    height: 2vw;
+    margin-bottom: 10px;
 }
 
 .active,
 .demo:hover{
-    background-color:  orange;
+    background-color:  #30CFD0;
 }
 
 .cursor {
@@ -200,14 +260,21 @@ header .i-header{
 
 .fa-youtube {
     color: red;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 .fa-youtube:hover {
     color: #aa0000;
     margin-left: 10px;
 }
-footer{
-    background-color: #31384d;
+
+.footer-page{
+    padding: 15px;
+    background-color: #1c1e2b;
+}
+
+.footer-page a img{
+    width: 60px;
+    height: 60px;
 }
 
 .product-title-2{
