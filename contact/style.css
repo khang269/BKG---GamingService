@@ -119,8 +119,16 @@
     border: solid 2px ;
     background-color: #f5f5f5;
     border-radius: 5px;
+    display: inline-block;
 }
-
+/* @media (max-width: 768px){
+    .wrapper .container .row .location-item-btn{
+        display: inline;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+} */
 
 .footer-page{
     background-color: #1c1e2b;
