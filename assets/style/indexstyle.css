@@ -175,7 +175,7 @@ body {
 }
 
 .box-product{
-    height: 600px;
+    height: 60vh;
     position: relative;
     display: flex;
     align-items: center;
