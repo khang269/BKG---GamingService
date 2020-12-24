@@ -26,6 +26,11 @@ body {
     transform: rotate(45deg);
 } 
 
+.my-btn{
+    background-color: #875AE3;
+    border: 0px;
+}
+
 .dropdown {
     padding-top: 10px;
     font-size: 20px;

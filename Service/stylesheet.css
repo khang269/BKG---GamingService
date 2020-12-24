@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap');
 
 
+
+.my-btn{
+    background-color: #875AE3;
+    border: 0px;
+}
 body {
     font-family: 'Exo 2', sans-serif !important;
 }
