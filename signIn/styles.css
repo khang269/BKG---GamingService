@@ -113,7 +113,10 @@ body {
     width: 30px;
     height: auto;
 }
-
+.icon-signIn{
+    background-color: wheat;
+    border-radius: 3rem;
+}
 
 .have-account{
     color: white;
