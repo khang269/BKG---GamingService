@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap');
+
+
+
+.my-btn{
+    background-color: #875AE3;
+    border: 0px;
+}
+body {
+    font-family: 'Exo 2', sans-serif !important;
+}
+
+.center {
+    text-align: center;
+}
+
+.dropdown-toggle::after { 
+    /* content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin: 0 5px;
+    border-width: 0 3px 3px 0;
+    border-style: solid;
+    transform: rotate(135deg); */
+    border: solid;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 2px;
+    margin-left: 5px;
+    transform: rotate(45deg);
+} 
+
+.dropdown {
+    padding-top: 10px;
+    font-size: 20px;
+    border-bottom: 4px solid transparent;
+    transition: 0.4s;
+}
+
+.dropdown:hover {
+    border-bottom: 4px solid#875AE3;
+}
+
+.dropdown-item:hover{
+    color: white;
+    text-shadow: 0.5px 0.5px #888;
+    background-color:#30CFD0;
+}
+
+.carousel-item img{
+    max-height: 300px;
+}
+.carousel-caption {
+    position: relative;
+    left: auto;
+    right: auto;
+}
+.carousel-caption *{
+    color: white;
+}
+.infomation{
+    background-image: url("images/bg.jpg");
+    padding-top: 5em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 1em;
+}
+
+.header {
+    background-image: url("images/header1.jpg");
+    height: 140px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 25px;
+    color: #FFF;
+    text-shadow: 2px 2px #888;
+}
+
+.navbar-brand img {
+    height: 75px;
+}
+
+.navbar-brand a {
+    color: #FFF;
+    text-shadow: 2px 2px #888;
+}
+
+.linknav{
+    padding-left: 1em;
+}
+.linknav a{
+    color: white;
+    text-shadow: 1px 1px #888;
+}
+
+.mainnav:after{content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin: 0 5px;
+    border: 2px solid;
+    border-color: #FFF #FFF transparent transparent;
+    transform: rotate(45deg);
+}
+
+.product-info{
+    border-bottom: groove;
+    padding: 2rem 2rem;
+}
+.product-img img{
+    width: 100%;
+    height: 100%;
+}
+.product-description p{
+    text-align: justify;
+}
+.comment-card{
+    padding: 1rem 0rem;
+    border-bottom: groove;
+}
+.input-comment{
+    padding: 3rem 0rem;
+}
+/* .input-comment button{
+    border-radius: 10px;
+    float: right;
+} */
+.desc-comment-part{
+    padding: 1rem 0rem;
+}
+
+
+
+
+li {
+    padding-bottom: 15px;
+}
+
+.footer-page{
+    padding: 15px;
+    background-color: #1c1e2b;
+}
+
+.footer-page a img{
+    width: 60px;
+    height: 60px;
+}
