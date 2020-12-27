@@ -1,6 +1,25 @@
 <!-- TODO: Minh Ngoc - Trang dich vu 
     https://www.vng.com.vn/article/products/products.html#ent
 -->
+<?php
+    include('../phpscripts/connection.php');  
+    $failstate = "";
+
+
+    if($_SESSION['loggedin'] === FALSE){
+        header('Location: ../signIn/signIn.php');
+    }
+
+    $gamesql = "SELECT * FROM game WHERE ProductType = 0";
+    $gameresult = mysqli_query($con, $gamesql);  
+
+    $socialsql = "SELECT * FROM game WHERE ProductType = 1";
+    $socialresult = mysqli_query($con, $socialsql);  
+
+    $paymentsql = "SELECT * FROM game WHERE ProductType = 2";
+    $paymentresult = mysqli_query($con, $paymentsql);  
+?>
+
 <!DOCTYPE html>
  <html lang="en">
     <head>
@@ -91,36 +110,17 @@
                     </div>
                     <div class="col-12 col-lg-8">
                         <div class="row">
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <a href="../detailProductScreen/detailScreen.html" class="product-item-link">
-                                    <img src="images/GAME.png" alt="product-logo">
-                                    GAME 1
+                            <?php
+                            while($row = mysqli_fetch_array($gameresult,MYSQLI_ASSOC)){
+                                echo "<div class=\"col-6 col-sm-6 col-md-4 col-lg-4\">
+                                   <a href=\"../detailProductScreen/detailScreen.php?productID={$row['productID']}\" class=\"product-item-link\">
+                                    <img src=\"{$row['picturePath']}\" alt=\"product-logo\">
+                                    {$row['name']}
                                 </a>
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <a href="#" class="product-item-link">
-                                    <img src="images/GAME1.png" alt="product-logo">
-                                    GAME 2
-                                </a>
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <a href="#" class="product-item-link">
-                                    <img src="images/GAME2.jpg" alt="product-logo">
-                                    GAME 3
-                                </a>
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <a href="#" class="product-item-link">
-                                    <img src="images/GAME3.jpg" alt="product-logo">
-                                    GAME 4
-                                </a>
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <a href="#" class="product-item-link">
-                                    <img src="images/GAME4.jpg" alt="product-logo">
-                                    GAME 5
-                                </a>
-                            </div>
+                            </div>";
+                            }
+                            ?>
+                            
                         </div>
                     </div>
                 </div>
@@ -150,38 +150,16 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-8">
-                        <div class="row">
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <a href="#" class="product-item-link">
-                                    <img src="images/CLOUD1.png" alt="product-logo">
-                                    SERVICE 1
-                                </a>
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <a href="#" class="product-item-link">
-                                    <img src="images/CLOUD2.png" alt="product-logo">
-                                    SERVICE 2
-                                </a>
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <a href="#" class="product-item-link">
-                                    <img src="images/CLOUD3.jpg" alt="product-logo">
-                                    SERVICE 3
-                                </a>
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <a href="#" class="product-item-link">
-                                    <img src="images/CLOUD4.png" alt="product-logo">
-                                    SERVICE 4
-                                </a>
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <a href="#" class="product-item-link">
-                                    <img src="images/CLOUD5.png" alt="product-logo">
-                                    SERVICE 5
-                                </a>
-                            </div>
-                        </div>
+                            <?php
+                                while($row = mysqli_fetch_array($socialresult,MYSQLI_ASSOC)){
+                                    echo "<div class=\"col-6 col-sm-6 col-md-4 col-lg-4\">
+                                    <a href=\"../detailProductScreen/detailScreen.php?productID={$row['productID']}\" class=\"product-item-link\">
+                                        <img src=\"{$row['picturePath']}\" alt=\"product-logo\">
+                                        {$row['name']}
+                                    </a>
+                                </div>";
+                                }
+                            ?>
                     </div>
                 </div>
             </div>
@@ -210,24 +188,16 @@
                     </div>
                     <div class="col-12 col-lg-8">
                         <div class="row">
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <a href="#" class="product-item-link">
-                                    <img src="images/PAY.jpg" alt="product-logo">
-                                    PAYMENT 1
-                                </a>
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <a href="#" class="product-item-link">
-                                    <img src="images/PAY2.jpg" alt="product-logo">
-                                    PAYMENT 2
-                                </a>
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <a href="#" class="product-item-link">
-                                    <img src="images/PAY3.jpg" alt="product-logo">
-                                    PAYMENT 3
-                                </a>
-                            </div>
+                            <?php
+                                while($row = mysqli_fetch_array($paymentresult,MYSQLI_ASSOC)){
+                                    echo "<div class=\"col-6 col-sm-6 col-md-4 col-lg-4\">
+                                    <a href=\"../detailProductScreen/detailScreen.php?productID={$row['productID']}\" class=\"product-item-link\">
+                                        <img src=\"{$row['picturePath']}\" alt=\"product-logo\">
+                                        {$row['name']}
+                                    </a>
+                                </div>";
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>

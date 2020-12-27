@@ -1,5 +1,48 @@
+<!-- TODO: Khai- trang gioi thieu  
+    https://www.vng.com.vn/article/about/management.html
+    https://www.vng.com.vn/news/shareholders.1.html
+    https://www.vng.com.vn/article/about/ourculture.html
+    may trang nay ngan nen gom lai thanh mot trang lon nhe ...
+-->
+
+
+<?php
+    include('../phpscripts/connection.php');  
+    $failstate = "";
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if ( !isset($_POST['user'], $_POST['pass']) ) {
+            // Could not get the data that should have been sent.
+            exit('Please fill both the username and password fields!');
+        }
+    
+        $username = $_POST['user'];
+        $fullname = $_POST['fullname']  ;
+        $password = $_POST['pass'];  
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+          
+            //to prevent from mysqli injection  
+            $username = stripcslashes($username);  
+            $password = stripcslashes($password);  
+            $username = mysqli_real_escape_string($con, $username);  
+            $password = mysqli_real_escape_string($con, $password);  
+          
+           $sql = "INSERT INTO user (userName, Pass, Email, userType, FullName, PhoneNumber)
+            VALUES ('$username', '$password', '$email', 0, '$fullname', '$phone')";
+            
+    
+            if($con->query($sql) === TRUE){  
+                header('Location: ../signIn/signIn.php');
+            }  
+            else{  
+                $failstate = "Username already exist";
+            }
+    }
+?>
+
 <!DOCTYPE html>
-<html>
+ <html lang="en">
     <head>
         <title>Bootstrap Tutorial Sample Page</title>
         <meta charset="utf-8">
@@ -11,8 +54,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-        <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
@@ -46,12 +87,12 @@
                 </div>
                 
             </div>
-            <a class="btn btn-primary my-btn" href="../signUp/signUp.html">Sign Up</a>
+            <a class="btn btn-primary my-btn" href="../signIn/signIn.php">Sign In</a>
         </nav>
-        
+
         <div class="header row">
             <div class="container col-lg-6">
-                <h1>Đăng Nhập</h1>
+                <h1>Đăng Ký</h1>
                 <div class="container logo-signIn-beside center"><img class="" src="images/logo2.png" alt=""></div>
                 <div class="row text-center justify-content-center">
                     <div class="col-sm-4">
@@ -68,46 +109,42 @@
                     </div>
                 </div>
             </div>
-            <form class="signUpBackground container col-lg-5">
+            <form id="f1" action="" method="post" class="signUpBackground container col-lg-5">
 
-                
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Username">
+                    <input type="text" class="form-control" placeholder="Họ và Tên lót">
+                    <input id="name" name="fullname" type="text" class="form-control" placeholder="Tên">
+                </div>
+                <div class="input-group mb-3">
+                  <input id="user" name="user" type="text" class="form-control" placeholder="Username">
                 </div>
               
-                
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Your Password">
+                  <input id="email" name="email" type="text" class="form-control" placeholder="Địa chỉ Email">
+                  <div class="input-group-append">
+                    <span class="input-group-text">@example.com</span>
+                  </div>
                 </div>
-            
                 <div class="input-group mb-3">
-                    <input type="checkbox" data-toggle="toggle" data-onstyle="primary">
-                    <p class="col-sm-3 signInlink"> Is Admin?</p>
                     
+                    <input id="phone" name="phone" type="text" class="form-control" placeholder="Số điện thoại">
+                    <div class="input-group-append">
+                        <span class="input-group-text">0987654321</span>
+                    </div>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-primary btn-block" type="button">Đăng Nhập</button>
+                    <input id="pass" name="pass" type="password" class="form-control" placeholder="Mật khẩu">
                 </div>
-                <div class="input-group mb-3 row">
-                    <a href="#" class="btn btn-link col-sm-4 signInlink" >Quên mật khẩu?</a>
+                  <div class="input-group mb-3">
+                    <input id="passcheck" name="passcheck" type="password" class="form-control" placeholder="Nhập lại mật khẩu">
                 </div>
-
-                <div class="container center face-gg-signin">
-                    <button class="btn btn-outline-primary col-sm-4 icon-signIn">
-                        <img src="images/facebook.svg" alt="#">
-                        facebook
-                    </button>
-                    <button class="btn btn-outline-primary col-sm-4 icon-signIn">
-                        <img src="images/google.svg" alt="#">
-                        Google
-                    </button>
+                <div class="input-group mb-3">
+                    <input id="btn" type="submit" class="btn btn-primary btn-block">Đăng Ký</input>
                 </div>
-
-                <div class="input-group mb-3 row">
-                    <span class="container col-sm-6"><p class="have-account">Bạn không có tài khoản?</p></span>
-                    <a href="../signUp/signUp.html" class="btn btn-link col-sm-4 signInlink" >Đăng Ký</a>
+                <div class="input-group mb-3 rows">
+                    <span class="container col-sm-6"><p class="have-account">Bạn đã có tài khoản?</p></span>
+                    <a href="../signIn/signIn.html" class="btn btn-link col-sm-4 signInlink" >Đăng Nhập</a>
                 </div>
-                
             </form>
         </div>
 
@@ -129,7 +166,5 @@
                 </div>
             </div>
         </footer>
-
     </body>
-    
-</html>
+ </html>
