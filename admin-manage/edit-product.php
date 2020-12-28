@@ -119,26 +119,73 @@
                     </table>
                 </div>
             </div>
-            <div class="col-lg-9">
-                <h4>Hồ sơ</h4>
-                <p>Quản lý hồ sơ</p>
-                <div class = "user-list container">
-                    <div class = "user-card row">
-                        <img src="./images/user.png" class="rounded-circle" alt="" height="50px" width="50px">
-                        <p class="userName col-sm-2">ANguyen</p>
-                        <p class="name col-sm-2">Nguyen van A</p>
-                        <p class="phoneNumber col-sm-2">0395540052</p>
-                        <div class="action col-sm-3">
-                            <a href="edit-user.php" class="btn btn-primary">Chỉnh sửa</a>
-                            <button class="btn btn-primary">Cấm comment</button>
+            <form class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h4>Sản Phẩm</h4>
+                        <p>Chỉnh Sửa Sản Phẩm</p>
+                        <div class="form-edit">
+                            <div class="element row">
+                                <div class="label col-sm-3">
+                                    Tên sản phẩm:
+                                </div>
+                                <div class="value col-sm-8">
+                                    <input type="text" class="form-control" value="Example" disabled>
+                                </div>
+                            </div>
+                            <div class="element row">
+                                <div class="label col-sm-3">
+                                    Giới thiệu:
+                                </div>
+                                <div class="value col-sm-8">
+                                    <textarea class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="element row">
+                                <div class="label col-sm-3">
+                                    Thể loại:
+                                </div>
+                                <div class="value col-sm-8">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="ProductType" id="Game"
+                                            value="0" checked>
+                                        <label class="form-check-label" for="Game">
+                                            Game
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="ProductType" id="Cloud"
+                                            value="1">
+                                        <label class="form-check-label" for="Cloud">
+                                            Cloud
+                                        </label>
+                                    </div>
+                                    <div class="form-check disabled">
+                                        <input class="form-check-input" type="radio" name="ProductType" id="Pay"
+                                            value="2">
+                                        <label class="form-check-label" for="Pay">
+                                            Pay
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    
-                    
+                    <div class="col-lg-4">
+                        <div class="product-pic-div pic-div">
+                            <img src="./images/user.png" alt="#" id="photo">
+                            <input type="file" id="file">
+                            <label for="file" id="uploadBtn">Chọn ảnh</label>
+                        </div>
+                        <script src="loadImage.js"></script>
+
+                    </div>
                 </div>
-
-            </div>
-
+                <div class="center">
+                    <button class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
         </div>
 
     </div>

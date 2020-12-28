@@ -92,12 +92,12 @@
                             <tbody>
                                 <tr>
                                     <td><img src="images/curriculum.svg" alt="" height="30px" width="30px"></td>
-                                    <td><a href="#" class="btn btn-link">Profile</a></td>
+                                    <td><a href="#" class="btn btn-link">Hồ Sơ</a></td>
                                     
                                 </tr>
                                 <tr>
                                     <td><img src="images/logout.svg" alt="" height="30px" width="30px"></td>
-                                    <td><a href="../phpscripts/logout.php" class="btn btn-link">Logout</a></td>
+                                    <td><a href="../phpscripts/logout.php" class="btn btn-link">Đăng xuất</a></td>
                                     
                                 </tr>
                             </tbody>

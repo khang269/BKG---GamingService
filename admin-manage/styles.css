@@ -85,6 +85,115 @@ body {
     border-color: #FFF #FFF transparent transparent;
     transform: rotate(45deg);
 }
+
+.user-card{
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    font-size: 14pt;
+    padding: 1rem 2rem;
+    border: solid 1px grey;
+    border-radius: 30px;
+    box-shadow: 3px 5px 20px grey;
+}
+.user-card:hover{
+    background-color: #eee;
+}
+.game-card{
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    font-size: 14pt;
+    padding: 1rem 2rem;
+    border: solid 1px grey;
+    border-radius: 30px;
+    box-shadow: 3px 5px 20px grey;
+}
+.game-card:hover{
+    background-color: #eee;
+}
+.about{
+    text-align: justify;
+}
+.action button{
+    margin-top: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+.body-profile{
+    padding: 3rem 0rem;
+}
+.body-profile h3{
+    padding: 0.5rem 1rem;
+}
+.element{
+    padding: 1rem 0rem;
+}
+.label{
+    text-align: right;
+    color: grey;
+    margin-top: 0.5rem;
+}
+.value{
+    text-align: left;
+}
+
+.product-pic-div{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid grey;
+}
+.profile-pic-div{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid grey;
+}
+#photo{
+    height: 100%;
+    width: 100%;
+}
+#file{
+    display: none;
+}
+#uploadBtn{
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background-color:rgba(0, 0, 0, 0.7);
+    line-height: 30px;
+    color: wheat;
+    font-size: 15px;
+    cursor: pointer;
+    display: none;
+}
+
 .footer-page{
     padding: 15px;
     background-color: #1c1e2b;

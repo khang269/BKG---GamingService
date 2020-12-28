@@ -90,7 +90,7 @@
     </div>
     <div class="container body-profile">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <div class="row">
                     <img src="./images/user.png" class="rounded-circle" alt="" height="50px" width="50px">
                     <h3>Username</h3>
@@ -106,7 +106,7 @@
 
                             <tr>
                                 <td><img src="images/gameProduct.svg" alt="" height="30px" width="30px"></td>
-                                <td><a href="product-list-screen.php" class="btn btn-link">Dịch vụ</a></td>
+                                <td><a href="#" class="btn btn-link">Dịch vụ</a></td>
 
                             </tr>
 
@@ -119,28 +119,63 @@
                     </table>
                 </div>
             </div>
-            <div class="col-lg-9">
-                <h4>Hồ sơ</h4>
-                <p>Quản lý hồ sơ</p>
-                <div class = "user-list container">
-                    <div class = "user-card row">
-                        <img src="./images/user.png" class="rounded-circle" alt="" height="50px" width="50px">
-                        <p class="userName col-sm-2">ANguyen</p>
-                        <p class="name col-sm-2">Nguyen van A</p>
-                        <p class="phoneNumber col-sm-2">0395540052</p>
-                        <div class="action col-sm-3">
-                            <a href="edit-user.php" class="btn btn-primary">Chỉnh sửa</a>
-                            <button class="btn btn-primary">Cấm comment</button>
+            <div class="col-lg-10">
+                <h4>Sản Phẩm</h4>
+                <p>Quản lý sản phẩm</p>
+                <div class = "game-list container">
+                    <div class = "game-card row">
+                        <img src="./images/user.png" class="rounded" alt="" height="100px" width="100px">
+                        <p class="title col-sm-3">AdventureTime</p>
+                        <p class="about col-sm-4">This game is about the adventure of Finn and Jake. Together, they discover distant land, protect Candy Kingdom from The Evil Ice-King. On their journey, they make friend with Vampire, Fire Princess and much more. </p>
+                        <p class="valueType col-sm-1">0</p>
+                        <div class="action col-sm-2">
+                            <a href="edit-product.php" class="btn btn-primary">Chỉnh sửa</a>
+                            <button class="btn btn-primary">Xoá</button>
                         </div>
                     </div>
-                    
-                    
                 </div>
-
+                <div class = "game-list container">
+                    <div class = "game-card row">
+                        <img src="./images/user.png" class="rounded" alt="" height="100px" width="100px">
+                        <p class="title col-sm-3">AdventureTime</p>
+                        <p class="about col-sm-4">This game is about the adventure of Finn and Jake. Together, they discover distant land, protect Candy Kingdom from The Evil Ice-King. On their journey, they make friend with Vampire, Fire Princess and much more. </p>
+                        <p class="valueType col-sm-1">0</p>
+                        <div class="action col-sm-2">
+                            <a href="edit-product.php" class="btn btn-primary">Chỉnh sửa</a>
+                            <button class="btn btn-primary">Xoá</button>
+                        </div>
+                    </div>
+                </div>
+                <div class = "game-list container">
+                    <div class = "game-card row">
+                        <img src="./images/user.png" class="rounded" alt="" height="100px" width="100px">
+                        <p class="title col-sm-3">AdventureTime</p>
+                        <p class="about col-sm-4">This game is about the adventure of Finn and Jake. Together, they discover distant land, protect Candy Kingdom from The Evil Ice-King. On their journey, they make friend with Vampire, Fire Princess and much more. </p>
+                        <p class="valueType col-sm-1">0</p>
+                        <div class="action col-sm-2">
+                            <a href="edit-product.php" class="btn btn-primary">Chỉnh sửa</a>
+                            <button class="btn btn-primary">Xoá</button>
+                        </div>
+                    </div>
+                </div>
+                <div class = "game-list container">
+                    <div class = "game-card row">
+                        <img src="./images/user.png" class="rounded" alt="" height="100px" width="100px">
+                        <p class="title col-sm-3">AdventureTime</p>
+                        <p class="about col-sm-4">This game is about the adventure of Finn and Jake. Together, they discover distant land, protect Candy Kingdom from The Evil Ice-King. On their journey, they make friend with Vampire, Fire Princess and much more. </p>
+                        <p class="valueType col-sm-1">0</p>
+                        <div class="action col-sm-2">
+                            <a href="edit-product.php" class="btn btn-primary">Chỉnh sửa</a>
+                            <button class="btn btn-primary">Xoá</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-btn container center">
+                    <a href="add-product.php" class="btn btn-primary"> Thêm Sản Phẩm</a>
+                </div>
             </div>
-
+            
         </div>
-
     </div>
 
 
