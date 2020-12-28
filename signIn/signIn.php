@@ -29,7 +29,7 @@
                 $_SESSION['name'] = $username;
                 $_SESSION['userType'] = $row["userType"];
                 echo 'Welcome ' . $_SESSION['name'] . '!';
-                header('Location: ..\index.html');
+                header('Location: ..\index.php');
                 $failstate = "";
             }  
             else{  
@@ -63,10 +63,10 @@
                 <div class="collapse navbar-collapse" id="navResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a href="../index.html" class="nav-link">Home</a>
+                            <a href="../index.php" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="../introduction/introduction.html" class="nav-link">Chúng tôi</a>
+                            <a href="../introduction/introduction.php" class="nav-link">Chúng tôi</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sản Phẩm</a>
@@ -78,7 +78,7 @@
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Kết Nối</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="../contact/contact.html">Văn Phòng</a>
+                                <a class="dropdown-item" href="../contact/contact.php">Văn Phòng</a>
                             </div>
                         </li>
                     </ul>
@@ -130,7 +130,7 @@
                     
                 </div>
                 <div class="input-group mb-3">
-                    <input class="btn btn-primary btn-block" type="submit" id="btn">Đăng Nhập</input>
+                    <input class="btn btn-primary btn-block" type="submit" id="btn"></input>
                 </div>
                 <div class="input-group mb-3 row">
                     <a href="#" class="btn btn-link col-sm-4 signInlink" >Quên mật khẩu?</a>
@@ -149,7 +149,7 @@
 
                 <div class="input-group mb-3 row">
                     <span class="container col-sm-6"><p class="have-account">Bạn không có tài khoản?</p></span>
-                    <a href="../signUp/signUp.html" class="btn btn-link col-sm-4 signInlink" >Đăng Ký</a>
+                    <a href="../signUp/signUp.php" class="btn btn-link col-sm-4 signInlink" >Đăng Ký</a>
                 </div>
                 
             </form>

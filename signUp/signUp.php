@@ -65,22 +65,22 @@
                 <div class="collapse navbar-collapse" id="navResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a href="../index.html" class="nav-link">Home</a>
+                            <a href="../index.php" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="../introduction/introduction.html" class="nav-link">Chúng tôi</a>
+                            <a href="../introduction/introduction.php" class="nav-link">Chúng tôi</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sản Phẩm</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="../Service/service.html#game">Trò Chơi Trực Tuyến</a>
-                                <a class="dropdown-item" href="../Service/service.html#cloud">Nền Tảng Kết Nối</a>
-                                <a class="dropdown-item" href="../Service/service.html#pay">Tài Chính và Thanh Toán</a>
+                                <a class="dropdown-item" href="../Service/service.php#game">Trò Chơi Trực Tuyến</a>
+                                <a class="dropdown-item" href="../Service/service.php#cloud">Nền Tảng Kết Nối</a>
+                                <a class="dropdown-item" href="../Service/service.php#pay">Tài Chính và Thanh Toán</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Kết Nối</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="../contact/contact.html">Văn Phòng</a>
+                                <a class="dropdown-item" href="../contact/contact.php">Văn Phòng</a>
                             </div>
                         </li>
                     </ul>
@@ -139,11 +139,11 @@
                     <input id="passcheck" name="passcheck" type="password" class="form-control" placeholder="Nhập lại mật khẩu">
                 </div>
                 <div class="input-group mb-3">
-                    <input id="btn" type="submit" class="btn btn-primary btn-block">Đăng Ký</input>
+                    <input id="btn" type="submit" class="btn btn-primary btn-block"></input>
                 </div>
                 <div class="input-group mb-3 rows">
                     <span class="container col-sm-6"><p class="have-account">Bạn đã có tài khoản?</p></span>
-                    <a href="../signIn/signIn.html" class="btn btn-link col-sm-4 signInlink" >Đăng Nhập</a>
+                    <a href="../signIn/signIn.php" class="btn btn-link col-sm-4 signInlink" >Đăng Nhập</a>
                 </div>
             </form>
         </div>

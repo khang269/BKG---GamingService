@@ -1,7 +1,11 @@
 <!-- TODO: Khang - trang index
-    https://www.vng.com.vn/index.html
+    https://www.vng.com.vn/index.php
  -->
+<?php
+    include('./phpscripts/connection.php');  
+    $failstate = "";
 
+?>
  <!DOCTYPE html>
  <html lang="en">
     <head>
@@ -25,10 +29,10 @@
                 <div class="collapse navbar-collapse" id="navResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a href="index.html" class="nav-link">Home</a>
+                            <a href="index.php" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="introduction/introduction.html" class="nav-link">Chúng tôi</a>
+                            <a href="introduction/introduction.php" class="nav-link">Chúng tôi</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sản Phẩm</a>
@@ -40,13 +44,32 @@
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Kết Nối</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="contact/contact.html">Văn Phòng</a>
+                                <a class="dropdown-item" href="contact/contact.php">Văn Phòng</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
-            <a class="btn btn-primary my-btn" href="./signUp/signUp.html">Sign Up</a>
+            
+            <?php
+                if($_SESSION['loggedin'] === FALSE){
+                    echo '<a class="btn btn-primary my-btn" href="../signUp/signUp.php">Sign Up</a>';
+                }else{
+                    echo '
+                    <img src="./profile-manage/images/user.png" class="rounded-circle" alt="" height="50px" width="50px">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                          Username
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="./profile-manage/profile.php">Profile</a>
+                          <a class="dropdown-item" href="./phpscripts/logout.php">Logout</a>
+                        </div>
+                    </div>
+                    ';
+                }
+
+            ?>
         </nav>
 
 
@@ -197,7 +220,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-xl-6 p-0 m-0">
-                        <a class="h1ref" href="Service\service.html">
+                        <a class="h1ref" href="Service\service.php">
                             <h2 class="text-steelgray f-unisect">
                                 PRODUCT
                             </h2>
@@ -235,7 +258,7 @@
 
         <section class="i-aboutus">
             <div class="container black-bg mb-5">
-                <a class="h1ref black-bg" href="introduction\introduction.html">
+                <a class="h1ref black-bg" href="introduction\introduction.php">
                     <h2 class="text-light text-center black-bg f-unisect">
                         We are 3K1N
                     </h2>

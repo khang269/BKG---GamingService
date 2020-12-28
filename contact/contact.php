@@ -1,3 +1,9 @@
+<?php
+    include('../phpscripts/connection.php');  
+    $failstate = "";
+
+?>
+
 <!DOCTYPE html>
  <html lang="en">
     <head>
@@ -17,36 +23,54 @@
     <body>
         <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
             <div class="container">
-                <a href="../introduction/introduction.html" class="navbar-brand"><img src="images/logo2.png" alt="logo_img"></a>
+                <a href="../introduction/introduction.php" class="navbar-brand"><img src="images/logo2.png" alt="logo_img"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navResponsive">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a href="../index.html" class="nav-link">Home</a>
+                            <a href="../index.php" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="../introduction/introduction.html" class="nav-link">Chúng tôi</a>
+                            <a href="../introduction/introduction.php" class="nav-link">Chúng tôi</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sản Phẩm</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="../Service/service.html#game">Trò Chơi Trực Tuyến</a>
-                                <a class="dropdown-item" href="../Service/service.html#cloud">Nền Tảng Kết Nối</a>
-                                <a class="dropdown-item" href="../Service/service.html#pay">Tài Chính và Thanh Toán</a>
+                                <a class="dropdown-item" href="../Service/service.php#game">Trò Chơi Trực Tuyến</a>
+                                <a class="dropdown-item" href="../Service/service.php#cloud">Nền Tảng Kết Nối</a>
+                                <a class="dropdown-item" href="../Service/service.php#pay">Tài Chính và Thanh Toán</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Kết Nối</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="contact.html">Văn Phòng</a>
+                                <a class="dropdown-item" href="contact.php">Văn Phòng</a>
                             </div>
                         </li>
                     </ul>
                 </div>
                 
             </div>
-            <a class="btn btn-primary my-btn" href="../signUp/signUp.html">Sign Up</a>
+            <?php
+                if($_SESSION['loggedin'] === FALSE){
+                    echo '<a class="btn btn-primary my-btn" href="../signUp/signUp.php">Sign Up</a>';
+                }else{
+                    echo '
+                    <img src="../profile-manage/images/user.png" class="rounded-circle" alt="" height="50px" width="50px">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                          Username
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="../profile-manage/profile.php">Profile</a>
+                          <a class="dropdown-item" href="../phpscripts/logout.php">Logout</a>
+                        </div>
+                    </div>
+                    ';
+                }
+
+            ?>
         </nav>
 
         <div class="header">

@@ -2,5 +2,5 @@
     session_start();
     session_destroy();
     // Redirect to the login page:
-    header('Location: ../signIn/signIn.html');
+    header('Location: ../signIn/signIn.php');
 ?>

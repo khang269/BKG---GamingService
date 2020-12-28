@@ -16,6 +16,6 @@ include('connection.php');
             echo 'Welcome ' . $_SESSION['name'] . '!';
         }  
         else{  
-            header('Location: ../signIn/signIn.html')
+            header('Location: ../signIn/signIn.php');
         }
 ?>
