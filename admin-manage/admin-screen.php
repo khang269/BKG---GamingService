@@ -51,6 +51,9 @@
                 
             </div>
             <?php
+            if(!(isset($_SESSION['loggedin']))){
+                echo '<a class="btn btn-primary my-btn" href="../signUp/signUp.php">Sign Up</a>';
+            }else{
                 if($_SESSION['loggedin'] === FALSE){
                     echo '<a class="btn btn-primary my-btn" href="../signUp/signUp.php">Sign Up</a>';
                 }else{
@@ -67,7 +70,7 @@
                     </div>
                     ';
                 }
-
+            }
             ?>
         </nav>
                 

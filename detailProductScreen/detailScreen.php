@@ -1,11 +1,8 @@
 <?php
     include('../phpscripts/connection.php');  
     $failstate = "";
-
-
-    if($_SESSION['loggedin'] === FALSE){
-        header('Location: ../signIn/signIn.php');
-    }
+    error_reporting(0);
+    
     if(isset($_GET["productID"]))
     {
         $productID = $_GET["productID"];
@@ -74,23 +71,26 @@
             </div>
             
             <?php
-                if($_SESSION['loggedin'] === FALSE){
+                if(!(isset($_SESSION['loggedin']))){
                     echo '<a class="btn btn-primary my-btn" href="../signUp/signUp.php">Sign Up</a>';
                 }else{
-                    echo '
-                    <img src="../profile-manage/images/user.png" class="rounded-circle" alt="" height="50px" width="50px">
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                          Username
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="../profile-manage/profile.php">Profile</a>
-                          <a class="dropdown-item" href="../phpscripts/logout.php">Logout</a>
+                    if($_SESSION['loggedin'] === FALSE){
+                        echo '<a class="btn btn-primary my-btn" href="../signUp/signUp.php">Sign Up</a>';
+                    }else{
+                        echo '
+                        <img src="../profile-manage/images/user.png" class="rounded-circle" alt="" height="50px" width="50px">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                              Username
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="../profile-manage/profile.php">Profile</a>
+                              <a class="dropdown-item" href="../phpscripts/logout.php">Logout</a>
+                            </div>
                         </div>
-                    </div>
-                    ';
+                        ';
+                    }
                 }
-
             ?>
         </nav>
         <div class="header">
@@ -147,8 +147,21 @@
                     <div class="col-sm-8 product-description">
                         <h1>Comment</h1>
                         <form id="f1" onsubmit="return validation()" action="" method="POST" class="input-comment">
-                            <input name="comment" type="text" class="form-control" rows="2" id="comment" placeholder="..."></input>
-                            <button class="btn btn-primary float-right" type="submit" id="btn" onclick="">Submit</button>
+                            <?php
+                                if(!(isset($_SESSION['loggedin'])) || ($_SESSION['loggedin'] === FALSE)){
+                                    echo '
+                                    <input name="comment" type="text" class="form-control" rows="2" id="comment" placeholder="đăng nhập để có thể bình luận" disabled></input>
+                                    <button class="btn btn-primary float-right" type="submit" id="btn" onclick="">Submit</button>
+                                    ';
+                                }else{
+                                    echo '
+                                    <input name="comment" type="text" class="form-control" rows="2" id="comment" placeholder="..." ></input>
+                                    <button class="btn btn-primary float-right" type="submit" id="btn" onclick="">Submit</button>
+                                    ';
+                                }
+                            
+                            
+                            ?>
                         </form>
                         <?php
                         while($commentrow = mysqli_fetch_array($commentresult,MYSQLI_ASSOC)){
