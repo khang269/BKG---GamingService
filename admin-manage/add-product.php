@@ -1,6 +1,12 @@
 <?php
     include('../phpscripts/connection.php');  
     $failstate = "";
+
+    // Random string function
+    function generateRandomString($length = 10) {
+        return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
+    }
+
     
     if($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION['userType']==1){
 
@@ -29,7 +35,7 @@
                 $ext = $info['extension']; // get the extension of the file
                 if(in_array(strtolower($ext) , array('png', 'jpg', 'jpeg')))
                 {
-                    $newname = "images/".$name.".".$ext; 
+                    $newname = "images/".generateRandomString().".".$ext; 
                     $target = $_SERVER['DOCUMENT_ROOT'].'Service/'.$newname;
                     if (move_uploaded_file( $_FILES['file']['tmp_name'], $target))
                     {
