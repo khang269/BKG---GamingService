@@ -1,6 +1,8 @@
 <?php
     include('../phpscripts/connection.php');  
-    $failstate = "";
+    if(!isset($_SESSION['loggedin'])){
+        $_SESSION['loggedin'] = FALSE;
+    }
 
 ?>
 
@@ -53,26 +55,25 @@
                 
             </div>
             <?php
-                if(!(isset($_SESSION['loggedin']))){
-                    echo '<a class="btn btn-primary my-btn" href="../signUp/signUp.php">Sign Up</a>';
-                }else{
-                    if($_SESSION['loggedin'] === FALSE){
-                        echo '<a class="btn btn-primary my-btn" href="../signUp/signUp.php">Sign Up</a>';
+                
+                    if($_SESSION['loggedin'] === false){
+                        echo '<a class="btn btn-primary my-btn" href="../signIn/signIn.php">Sign In</a>';
                     }else{
-                        echo '
-                        <img src="../profile-manage/images/user.png" class="rounded-circle" alt="" height="50px" width="50px">
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                              Username
+                        echo "
+                        <div class=\"dropdown\">
+                            <button type=\"button\" class=\"btn btn-link dropdown-toggle\" data-toggle=\"dropdown\">
+                              {$_SESSION['name']}
                             </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="../profile-manage/profile.php">Profile</a>
-                              <a class="dropdown-item" href="../phpscripts/logout.php">Logout</a>
+                            <div class=\"dropdown-menu\">
+                              <a class=\"dropdown-item\" href=\"../profile-manage/profile.php\">Profile</a>
+                              <a class=\"dropdown-item\" href=\"./phpscripts/logout.php\">Logout</a>
                             </div>
                         </div>
-                        ';
+                        ";
                     }
-                }
+                
+                
+
             ?>
         </nav>
 

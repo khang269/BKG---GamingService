@@ -124,11 +124,11 @@
                     ?>
                 </h4>
 
-                <div class="input-group mb-3">
+                <!-- <div class="input-group mb-3">
                     <input type="checkbox" data-toggle="toggle" data-onstyle="primary">
                     <p class="col-sm-3 signInlink"> Is Admin?</p>
                     
-                </div>
+                </div> -->
                 <div class="input-group mb-3">
                     <input class="btn btn-primary btn-block" type="submit" id="btn"></input>
                 </div>
