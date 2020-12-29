@@ -5,17 +5,18 @@
     
     if(isset($_GET["productID"]))
     {
-        $productID = $_GET["productID"];
+        $productID = htmlspecialchars($_GET["productID"]);
     }
 
-    $name = $_SESSION['name'];
+    $name = htmlspecialchars($_SESSION['name']);
     $sql = "SELECT * FROM game WHERE productID = $productID";
     $result = mysqli_query($con, $sql);  
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
+    if ($result->num_rows < 1) {
+        echo "here";
+        die();
+    }
 
-    $commentsql = "SELECT * FROM comment WHERE productID = $productID";
-    $commentresult = mysqli_query($con, $commentsql); 
-    
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         
         if (isset($_POST['commentID'])) {
@@ -28,12 +29,15 @@
             }
         }
         else {
-            $commentcontent = $_POST['comment'];
+            $commentcontent = htmlspecialchars($_POST['comment']);
             $submitsql = $sql = "INSERT INTO comment (userName, productID, Content)
             VALUES ('$name','$productID','$commentcontent')";
             $con->query($submitsql);
         }
     }
+
+    $commentsql = "SELECT * FROM comment WHERE productID = $productID";
+    $commentresult = mysqli_query($con, $commentsql); 
 ?>
 
 <!DOCTYPE html>

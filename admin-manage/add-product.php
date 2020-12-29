@@ -2,6 +2,25 @@
     include('../phpscripts/connection.php');  
     $failstate = "";
 
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        
+        if (isset($_POST['commentID'])) {
+            $sql = "DELETE FROM comment WHERE commentID=".$_POST['commentID'];
+
+            if ($con->query($sql) === TRUE) {
+                echo "<script>alert('Comment deleted successfully');</script>";
+            } else {
+                echo "Error deleting comment: " . $con->error;
+            }
+        }
+        else {
+            $commentcontent = htmlspecialchars($_POST['comment']);
+            $submitsql = $sql = "INSERT INTO comment (userName, productID, Content)
+            VALUES ('$name','$productID','$commentcontent')";
+            $con->query($submitsql);
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -124,7 +143,7 @@
                     </table>
                 </div>
             </div>
-            <form class="col-lg-9">
+            <form action="" method="post" enctype="multipart/form-data" class="col-lg-9">
                 <div class="row">
                     <div class="col-lg-8">
                         <h4>Sản Phẩm</h4>
@@ -135,7 +154,7 @@
                                     Tên sản phẩm:
                                 </div>
                                 <div class="value col-sm-8">
-                                    <input type="text" class="form-control" value="Example">
+                                    <input type="text" name="productName" class="form-control" value="Example">
                                 </div>
                             </div>
                             <div class="element row">
@@ -143,7 +162,7 @@
                                     Giới thiệu:
                                 </div>
                                 <div class="value col-sm-8">
-                                    <textarea class="form-control" rows="3"></textarea>
+                                    <textarea class="form-control" name="productInfo" rows="3"></textarea>
                                 </div>
                             </div>
                             <div class="element row">
@@ -152,21 +171,21 @@
                                 </div>
                                 <div class="value col-sm-8">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="ProductType" id="Game"
+                                        <input class="form-check-input" name="productType" type="radio" name="ProductType" id="Game"
                                             value="0" checked>
                                         <label class="form-check-label" for="Game">
                                             Game
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="ProductType" id="Cloud"
+                                        <input class="form-check-input" name="productType" type="radio" name="ProductType" id="Cloud"
                                             value="1">
                                         <label class="form-check-label" for="Cloud">
                                             Cloud
                                         </label>
                                     </div>
                                     <div class="form-check disabled">
-                                        <input class="form-check-input" type="radio" name="ProductType" id="Pay"
+                                        <input class="form-check-input" name="productType" type="radio" name="ProductType" id="Pay"
                                             value="2">
                                         <label class="form-check-label" for="Pay">
                                             Pay
@@ -181,7 +200,7 @@
                         <div class="product-pic-div pic-div">
                             <img src="./images/user.png" alt="#" id="photo">
                             <input type="file" id="file">
-                            <label for="file" id="uploadBtn">Chọn ảnh</label>
+                            <label for="file" name="file" id="uploadBtn">Chọn ảnh</label>
                         </div>
                         <script src="loadImage.js"></script>
 
