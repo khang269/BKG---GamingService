@@ -27,6 +27,7 @@
             if($count == 1){  
                 $_SESSION['loggedin'] = TRUE;
                 $_SESSION['name'] = $username;
+                $_SESSION['profilePic'] = $row["profilePic"];;
                 $_SESSION['userType'] = $row["userType"];
                 echo 'Welcome ' . $_SESSION['name'] . '!';
                 header('Location: ..\index.php');
