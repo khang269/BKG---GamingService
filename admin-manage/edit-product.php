@@ -2,6 +2,56 @@
     include('../phpscripts/connection.php');  
     $failstate = "";
 
+    // Random string function
+    function generateRandomString($length = 10) {
+        return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
+    }
+    
+    if ($_SESSION['userType']==1) {  
+
+        if(isset($_GET["productID"]))
+        {
+            $productID = htmlspecialchars($_GET["productID"]);
+        }
+
+        if (isset($_POST['submit'])) {
+            $name= htmlspecialchars($_POST['productName']);
+            $prodInfo= htmlspecialchars($_POST['productInfo']);
+            $type= htmlspecialchars($_POST['productType']);
+            
+            // Update profile info
+            if(file_exists($_FILES['file']['tmp_name'])) {
+                $info = pathinfo($_FILES["file"]["name"]);
+                $ext = $info['extension']; // get the extension of the file
+                if(in_array(strtolower($ext) , array('png', 'jpg', 'jpeg')))
+                {
+                    $newname = "images/".generateRandomString().".".$ext; 
+                    $target = $_SERVER['DOCUMENT_ROOT'].'Service/'.$newname;
+                    if (move_uploaded_file( $_FILES['file']['tmp_name'], $target))
+                    {
+                        $sql = "UPDATE game SET name='{$name}', picturePath='{$newname}', about='{$prodInfo}', ProductType='{$type}' WHERE productID={$productID};";
+                    }
+                }
+            }
+            $sql = "UPDATE game SET name='{$name}', about='{$prodInfo}', ProductType='{$type}' WHERE productID={$productID};";
+            echo $sql;
+            if ($con->query($sql) === TRUE) {
+                echo "<script>alert('Product edited successfully');</script>";
+            } else {
+                echo "Error editing product: " . $con->error;
+            }
+        }
+
+        // Get data of product to edit
+        $sql = "SELECT * FROM game WHERE productID = $productID";
+        $result = mysqli_query($con, $sql);  
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
+        if ($result->num_rows !== 1) {
+            die();
+        }
+
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -66,18 +116,18 @@
                     </table>
                 </div>
             </div>
-            <form class="col-lg-9">
+            <form action="" method="post" enctype="multipart/form-data" class="col-lg-9">
                 <div class="row">
                     <div class="col-lg-8">
                         <h4>Sản Phẩm</h4>
-                        <p>Chỉnh Sửa Sản Phẩm</p>
+                        <p>Thêm Sản Phẩm</p>
                         <div class="form-edit">
                             <div class="element row">
                                 <div class="label col-sm-3">
                                     Tên sản phẩm:
                                 </div>
                                 <div class="value col-sm-8">
-                                    <input type="text" class="form-control" value="Example" disabled>
+                                    <?php echo '<input type="text" name="productName" class="form-control" value="'.$row['name'].'">'; ?>
                                 </div>
                             </div>
                             <div class="element row">
@@ -85,7 +135,7 @@
                                     Giới thiệu:
                                 </div>
                                 <div class="value col-sm-8">
-                                    <textarea class="form-control" rows="3"></textarea>
+                                    <?php echo '<textarea class="form-control" name="productInfo" rows="3">'.$row['about'].'</textarea>'; ?>
                                 </div>
                             </div>
                             <div class="element row">
@@ -94,22 +144,46 @@
                                 </div>
                                 <div class="value col-sm-8">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="ProductType" id="Game"
-                                            value="0" checked>
+                                        <?php 
+                                            if ($row['ProductType']==0) {
+                                                echo '<input class="form-check-input" name="productType" type="radio" name="ProductType" id="Game"
+                                            value="0" checked>';
+                                            }
+                                            else {
+                                                echo '<input class="form-check-input" name="productType" type="radio" name="ProductType" id="Game"
+                                            value="0">';
+                                            }
+                                        ?>
                                         <label class="form-check-label" for="Game">
                                             Game
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="ProductType" id="Cloud"
-                                            value="1">
+                                    <?php 
+                                            if ($row['ProductType']==1) {
+                                                echo '<input class="form-check-input" name="productType" type="radio" name="ProductType" id="Cloud"
+                                            value="1" checked>';
+                                            }
+                                            else {
+                                                echo '<input class="form-check-input" name="productType" type="radio" name="ProductType" id="Cloud"
+                                            value="1">';
+                                            }
+                                        ?>
                                         <label class="form-check-label" for="Cloud">
                                             Cloud
                                         </label>
                                     </div>
                                     <div class="form-check disabled">
-                                        <input class="form-check-input" type="radio" name="ProductType" id="Pay"
-                                            value="2">
+                                    <?php 
+                                            if ($row['ProductType']==2) {
+                                                echo '<input class="form-check-input" name="productType" type="radio" name="ProductType" id="Pay"
+                                            value="2" checked>';
+                                            }
+                                            else {
+                                                echo '<input class="form-check-input" name="productType" type="radio" name="ProductType" id="Pay"
+                                            value="2">';
+                                            }
+                                        ?>
                                         <label class="form-check-label" for="Pay">
                                             Pay
                                         </label>
@@ -121,20 +195,25 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="product-pic-div pic-div">
-                            <img src="./images/user.png" alt="#" id="photo">
-                            <input type="file" id="file">
-                            <label for="file" id="uploadBtn">Chọn ảnh</label>
+                            <?php 
+                                if ($row['picturePath']!=NULL) {
+                                    echo '<img src="../Service/'.$row['picturePath'].'" alt="#" id="photo">';
+                                }
+                                else {
+                                    echo '<img src="./images/user.png" alt="#" id="photo">';
+                                }
+                            ?>
+                            <input type="file" name="file" id="file">
+                            <label for="file" name="file" id="uploadBtn">Chọn ảnh</label>
                         </div>
                         <script src="loadImage.js"></script>
-
                     </div>
                 </div>
                 <div class="center">
-                    <button class="btn btn-primary">Lưu</button>
+                <button type="submit" name="submit" value="Add" class="btn btn-primary">Lưu</button>
                 </div>
             </form>
         </div>
-
     </div>
 
 

@@ -20,7 +20,7 @@
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         
         if (isset($_POST['commentID'])) {
-            $sql = "DELETE FROM comment WHERE commentID='$_POST['commentID']'";
+            $sql = "DELETE FROM comment WHERE commentID='$_POST[commentID]'";
 
             if ($con->query($sql) === TRUE) {
                 echo "<script>alert('Comment deleted successfully');</script>";
