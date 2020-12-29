@@ -62,7 +62,7 @@
                 <div class="collapse navbar-collapse" id="navResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a href="../index.php" class="nav-link">Home</a>
+                            <a href="..//index/index.php" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a href="../introduction/introduction.php" class="nav-link">Chúng tôi</a>

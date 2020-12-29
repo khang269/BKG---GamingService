@@ -3,9 +3,6 @@
 -->
 <?php
     include('../phpscripts/connection.php');  
-    $failstate = "";
-
-    error_reporting(0);
 
     $gamesql = "SELECT * FROM game WHERE ProductType = 0";
     $gameresult = mysqli_query($con, $gamesql);  

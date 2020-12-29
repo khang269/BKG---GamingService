@@ -2,7 +2,7 @@
     https://www.vng.com.vn/index.php
  -->
 <?php
-    include('./phpscripts/connection.php');  
+    include('../phpscripts/connection.php');  
     $failstate = "";
     // error_reporting(0);
 
@@ -13,73 +13,17 @@
         <title>Bootstrap Tutorial Sample Page</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://m.w3newbie.com/you-tube.css">
-        <link rel="stylesheet" href="assets/style/indexstyle.css">
+        <link rel="stylesheet" href="../assets/style/indexstyle.css">
         
     </head>
     <body>
 
 
-        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-            <div class="container">
-                <a href="#" class="navbar-brand"><img src="Service/images/logo2.png" alt=""></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navResponsive">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a href="index.php" class="nav-link">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a href="introduction/introduction.php" class="nav-link">Chúng tôi</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sản Phẩm</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="Service/service.php">Trò Chơi Trực Tuyến</a>
-                                <a class="dropdown-item" href="Service/service.php">Nền Tảng Kết Nối</a>
-                                <a class="dropdown-item" href="Service/service.php">Tài Chính và Thanh Toán</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Kết Nối</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="contact/contact.php">Văn Phòng</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <?php
-                $path2Pic="";
-                if($_SESSION['loggedin'] === FALSE){
-                    echo '<a class="btn btn-primary my-btn" href="../signUp/signUp.php">Sign Up</a>';
-                }else{
-                    if ($_SESSION['profilePic'] != NULL) {
-                        $path2Pic="./profileImages/".$_SESSION['profilePic'];
-                    }
-                    else {
-                        $path2Pic="assets/img/user.png";
-                    }
-
-                    echo '
-                    <img src="'.$path2Pic.'" class="rounded-circle" alt="" height="50px" width="50px">
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                        '.$_SESSION['name'].'
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="./profile-manage/profile.php">Profile</a>
-                          <a class="dropdown-item" href="./phpscripts/logout.php">Logout</a>
-                        </div>
-                    </div>
-                    ';
-                }
-
-            ?>
-        </nav>
+        <?php
+            include('../phpscripts/navigation.php')
+        ?>
 
         <section class="i-header">
             <div class="container-fluid p-0 m-0">
@@ -91,13 +35,13 @@
                     </ol>
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img src="assets/img/header1.png" class="d-block w-100" alt="...">
+                        <img src="../assets/img/header1.png" class="d-block w-100" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img src="assets/img/header2.png" class="d-block w-100" alt="...">
+                        <img src="../assets/img/header2.png" class="d-block w-100" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img src="assets/img/header3.png" class="d-block w-100" alt="...">
+                        <img src="../assets/img/header3.png" class="d-block w-100" alt="...">
                       </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -242,17 +186,17 @@
                                 <div class="row p-0 m-0">
                                     <div class ="demo cursor col-4 col-xl-12"
                                     onclick="currentSlide(1)">
-                                        <img src="assets\img\03.svg">
+                                        <img src="..\assets\img\03.svg">
                                         <span class = "product-title-2">GAME</span>
                                     </div>
                                     <div class ="demo cursor col-4 col-xl-12"
                                     onClick="currentSlide(2)">
-                                        <img src="assets\img\01.svg">
+                                        <img src="..\assets\img\01.svg">
                                         <span class = "product-title-2">SOCIAL MEDIA</span>
                                     </div>
                                     <div class ="demo cursor col-4 col-xl-12" 
                                     onClick="currentSlide(3)"> 
-                                        <img src="assets\img\02.svg">
+                                        <img src="..\assets\img\02.svg">
                                         <span class = "product-title-2">PAYMENT PLATFORMS</span>
                                     </div>
                                 </div>
@@ -285,16 +229,16 @@
                     </ol>
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img src="assets\img\campus.png" class="d-block w-100" alt="...">
+                        <img src="..\assets\img\campus.png" class="d-block w-100" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img src="assets\img\campus2.jpg" class="d-block w-100" alt="...">
+                        <img src="..\assets\img\campus2.jpg" class="d-block w-100" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img src="assets\img\campus3.png" class="d-block w-100" alt="...">
+                        <img src="..\assets\img\campus3.png" class="d-block w-100" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img src="assets\img\campus4.png" class="d-block w-100" alt="...">
+                        <img src="..\assets\img\campus4.png" class="d-block w-100" alt="...">
                       </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
@@ -317,9 +261,9 @@
                 <div class="footer-page m-auto text-center">
                     <div class="col-12 social-padding">
                         <div class="social-bt">
-                            <a href="#" target="_blank" class="icon-footer"><img src="assets/img/facebook.svg" alt="">
+                            <a href="#" target="_blank" class="icon-footer"><img src="../assets/img/facebook.svg" alt="">
                             </a>
-                            <a href="#" target="_blank" class="icon-footer"><img src="assets/img/youtube.svg" alt=""></a>
+                            <a href="#" target="_blank" class="icon-footer"><img src="../assets/img/youtube.svg" alt=""></a>
                         </div>
                     </div>
                     <div class="footer-copyright col-12 text-center text-light">
@@ -329,8 +273,8 @@
             </div>
         </footer>
 
-        <script src="assets/jquery-3.5.1.min.js"></script>
-        <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../assets/jquery-3.5.1.min.js"></script>
+        <script src="../assets/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
         <script>

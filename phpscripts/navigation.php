@@ -7,7 +7,7 @@
                 <div class="collapse navbar-collapse" id="navResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a href="../index.php" class="nav-link">Home</a>
+                            <a href="../index/index.php" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a href="../introduction/introduction.php" class="nav-link">Chúng tôi</a>
@@ -15,9 +15,9 @@
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sản Phẩm</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#game">Trò Chơi Trực Tuyến</a>
-                                <a class="dropdown-item" href="#cloud">Nền Tảng Kết Nối</a>
-                                <a class="dropdown-item" href="#pay">Tài Chính và Thanh Toán</a>
+                                <a class="dropdown-item" href="../Service/service.php">Trò Chơi Trực Tuyến</a>
+                                <a class="dropdown-item" href="../Service/service.php">Nền Tảng Kết Nối</a>
+                                <a class="dropdown-item" href="../Service/service.php">Tài Chính và Thanh Toán</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Kết Nối</a>
@@ -31,7 +31,7 @@
             <?php
                 $path2Pic="";
                 if($_SESSION['loggedin'] === FALSE){
-                    echo '<a class="btn btn-primary my-btn" href="../signUp/signUp.php">Sign Up</a>';
+                    echo '<a class="btn btn-primary my-btn" href="../signIn/signIn.php">Sign In</a>';
                 }else{
                     if ($_SESSION['profilePic'] != NULL) {
                         $path2Pic="../profileImages/".$_SESSION['profilePic'];
