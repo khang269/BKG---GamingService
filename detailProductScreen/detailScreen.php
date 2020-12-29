@@ -17,10 +17,22 @@
     $commentresult = mysqli_query($con, $commentsql); 
     
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $commentcontent = $_POST['comment'];
-        $submitsql = $sql = "INSERT INTO comment (userName, productID, Content)
-        VALUES ('$name','$productID','$commentcontent')";
-        $con->query($submitsql);
+        
+        if (isset($_POST['commentID'])) {
+            $sql = "DELETE FROM comment WHERE commentID=".$_POST['commentID'];
+
+            if ($con->query($sql) === TRUE) {
+                echo "<script>alert('Comment deleted successfully');</script>";
+            } else {
+                echo "Error deleting comment: " . $con->error;
+            }
+        }
+        else {
+            $commentcontent = $_POST['comment'];
+            $submitsql = $sql = "INSERT INTO comment (userName, productID, Content)
+            VALUES ('$name','$productID','$commentcontent')";
+            $con->query($submitsql);
+        }
     }
 ?>
 
@@ -164,19 +176,25 @@
                                     <button class="btn btn-primary float-right" type="submit" id="btn" onclick="">Submit</button>
                                     ';
                                 }
-                            
-                            
                             ?>
                         </form>
                         <?php
                         while($commentrow = mysqli_fetch_array($commentresult,MYSQLI_ASSOC)){
+                            $deleteBtn = "";
+                            if ($_SESSION["userType"] == 1) {
+                                $deleteBtn = '
+                                <form id="deleteForm"  action="" method="POST" class="delete-comment">
+                                    <input name="commentID" type="text"  hidden value="'.$commentrow['commentID'].' ">
+                                    <button class="btn btn-danger float-right" type="submit" id="btn" onclick="">Delete</button>
+                                </form>';
+                            }
                             echo "<div class=\"comment-card row\">
                             <div class=\"col-sm-1\">
                                 <img src=\"images/user.png\" class=\"rounded-circle\" alt=\"\" height=\"50px\" width=\"50px\">
                             </div>
                             <div class=\"col-sm-11\">
                                 <h4>{$commentrow['userName']}</h4>
-                                <p>{$commentrow['Content']}</p>
+                                <p>{$commentrow['Content']}</p>".$deleteBtn."
                             </div>
                         </div> ";
                         }
