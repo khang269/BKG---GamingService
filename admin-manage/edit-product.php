@@ -1,6 +1,7 @@
 <?php
     include('../phpscripts/connection.php');  
     $failstate = "";
+    // error_reporting(0);
 
     // Random string function
     function generateRandomString($length = 10) {
@@ -34,7 +35,6 @@
                 }
             }
             $sql = "UPDATE game SET name='{$name}', about='{$prodInfo}', ProductType='{$type}' WHERE productID={$productID};";
-            echo $sql;
             if ($con->query($sql) === TRUE) {
                 echo "<script>alert('Product edited successfully');</script>";
             } else {
@@ -80,7 +80,7 @@
         <div class="container">
             <h1>Admin</h1>
             <div class="row linknav">
-                <a class="mainnav" href="../">Trang Chủ</a>
+                <a class="mainnav" href="../index">Trang Chủ</a>
                 <a href="#">Admin</a>
             </div>
         </div>

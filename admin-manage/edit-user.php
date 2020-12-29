@@ -29,7 +29,7 @@
         <div class="container">
             <h1>Admin</h1>
             <div class="row linknav">
-                <a class="mainnav" href="../">Trang Chủ</a>
+                <a class="mainnav" href="../index">Trang Chủ</a>
                 <a href="#">Admin</a>
             </div>
         </div>

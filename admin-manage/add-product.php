@@ -1,6 +1,7 @@
 <?php
     include('../phpscripts/connection.php');  
     $failstate = "";
+    // error_reporting(0);
 
     // Random string function
     function generateRandomString($length = 10) {
@@ -15,12 +16,13 @@
             $productType = htmlspecialchars($_POST["productType"]);
         }
     
-        $sql = "SELECT * FROM products WHERE productType = $productType";
+        $sql = "SELECT * FROM game WHERE productType = $productType";
         $result = mysqli_query($con, $sql);  
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
         if ($result->num_rows === 1) {
             die();
-        }    
+        }
+        
 
         if (isset($_POST['submit'])) {
             $name= htmlspecialchars($_POST['productName']);
@@ -80,7 +82,7 @@
         <div class="container">
             <h1>Admin</h1>
             <div class="row linknav">
-                <a class="mainnav" href="../">Trang Chủ</a>
+                <a class="mainnav" href="../index">Trang Chủ</a>
                 <a href="#">Admin</a>
             </div>
         </div>

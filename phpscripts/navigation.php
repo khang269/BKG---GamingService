@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
             <div class="container">
-                <a href="#" class="navbar-brand"><img src="images/logo2.png" alt="logo-trademark"></a>
+                <a href="../index" class="navbar-brand"><img src="images/logo2.png" alt="logo-trademark"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navResponsive">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -57,7 +57,7 @@
                     <img src="'.$path2Pic.'" class="rounded-circle" alt="" height="50px" width="50px">
                     <div class="dropdown">
                         <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                        '.$_SESSION['name'].'
+                        '.$_SESSION['fullName'].'
                         </button>
                         <div class="dropdown-menu">
                           <a class="dropdown-item" href="../profile-manage/profile.php">Profile</a>

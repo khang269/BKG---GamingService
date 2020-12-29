@@ -34,7 +34,7 @@
             <div class="container">
                 <h1>Chúng Tôi</h1>
                 <div class="row linknav">
-                    <a class="mainnav" href="../index.php">Trang Chủ</a>
+                    <a class="mainnav" href="../index/index.php">Trang Chủ</a>
                     <a href="#">Chúng tôi</a>
                 </div>
             </div>
