@@ -48,29 +48,6 @@ body {
     background-color:#30CFD0;
 }
 
-.carousel-item img{
-    max-height: 300px;
-}
-.carousel-caption {
-    position: relative;
-    left: auto;
-    right: auto;
-}
-.carousel-caption *{
-    color: white;
-}
-.infomation{
-    background-image: url("images/bg.jpg");
-    padding-top: 5em;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-bottom: 1em;
-}
-
-.navbar-brand img {
-    height: 75px;
-}
-
 .header {
     background-image: url("images/header1.jpg");
     height: 140px;
@@ -98,7 +75,8 @@ body {
     text-shadow: 1px 1px #888;
 }
 
-.mainnav:after{content: "";
+.mainnav:after{
+    content: "";
     display: inline-block;
     width: 7px;
     height: 7px;
@@ -107,71 +85,57 @@ body {
     border-color: #FFF #FFF transparent transparent;
     transform: rotate(45deg);
 }
-
-.introduction {
-    padding-top: 50px;
-    padding-bottom: 50px;
+.body-profile{
+    padding: 3rem 0rem;
 }
-
-.introduction h1{
-    font-weight: 500;
-    color: #875AE3;
+.body-profile h3{
+    padding: 0.5rem 1rem;
 }
-
-.introduction p {
-    padding-top: 20px;
-    font-size: 20px;
-    color: #444;
+.element{
+    padding: 1rem 0rem;
 }
-
-.product-item {
-    padding-top: 100px;
-    padding-bottom: 150px;
-}
-
-.product-icon img{
-    width: 75px;
-}
-
-
-.product-name {
-    padding-top: 10px;
-    font-size: 22px;
+.label{
     text-align: right;
-    color: #875AE3; 
+    color: grey;
+    margin-top: 0.5rem;
+}
+.value{
+    text-align: left;
 }
 
-.product-detail {
-    padding-top: 20px;
-    font-size: 18px;
-}
 
-li {
-    padding-bottom: 15px;
+.profile-pic-div{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid grey;
 }
-
-.product-item:after{content: "";
-  width: 100%;/* size of your margin */
-  border-bottom:1.5px solid #AAA;
-  align-content: center;
-  position: absolute;
-  padding-top: 100px;
-}
-
-.product-item-link {
-    display: block;
-    border: 1.5px solid #BBB;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 18px;
-    color: #444;
-}
-
-.product-item-link img{
-    display: block;
+#photo{
+    height: 100%;
     width: 100%;
-    height:120px;
-    align-self: center;
+}
+#file{
+    display: none;
+}
+#uploadBtn{
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background-color:rgba(0, 0, 0, 0.7);
+    line-height: 30px;
+    color: wheat;
+    font-size: 15px;
+    cursor: pointer;
+    display: none;
 }
 
 .footer-page{

@@ -40,7 +40,7 @@ sh.cp('-f', [
   `_gh_pages/docs/${versionShort}/assets/brand/bootstrap-outline.svg`,
   `_gh_pages/docs/${versionShort}/assets/brand/bootstrap-solid.svg`
 ], `${folderName}/assets/brand/`)
-sh.rm(`${folderName}/index.html`)
+sh.rm(`${folderName}/index.php`)
 
 // get all examples' HTML files
 sh.find(`${folderName}/**/*.html`).forEach(file => {
