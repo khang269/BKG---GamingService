@@ -184,8 +184,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                     </div>
                     <div class="center">
-                        <!-- <button type="submit" class="btn btn-primary">Lưu</button> -->
-                        <input type="submit" id="submit" value="Submit" />
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                        <!-- <input type="submit" id="submit" value="Submit" /> -->
                     </div>
                 </form>
                 </div>

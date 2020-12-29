@@ -1,7 +1,26 @@
 <?php
     include('../phpscripts/connection.php');  
     $failstate = "";
+    error_reporting(0);
+    if ($_SESSION['userType']==1) {
+        
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            
+            if (isset($_POST['productID'])) {
+                $sql = "DELETE FROM game WHERE productID='$_POST[productID]'";
 
+                if ($con->query($sql) === TRUE) {
+                    echo "<script>alert('Product deleted successfully');</script>";
+                } else {
+                    echo "Error deleting product: " . $con->error;
+                }
+            }
+        }
+
+        $productsql = "SELECT * FROM game";
+        $productresult = mysqli_query($con, $productsql); 
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -68,63 +87,43 @@
             </div>
             <div class="col-lg-10">
                 <h4>Sản Phẩm</h4>
-                <p>Quản lý sản phẩm</p>
-                <div class = "game-list container">
-                    <div class = "game-card row">
-                        <img src="./images/user.png" class="rounded" alt="" height="100px" width="100px">
-                        <p class="title col-sm-3">AdventureTime</p>
-                        <p class="about col-sm-4">This game is about the adventure of Finn and Jake. Together, they discover distant land, protect Candy Kingdom from The Evil Ice-King. On their journey, they make friend with Vampire, Fire Princess and much more. </p>
-                        <p class="valueType col-sm-1">0</p>
-                        <div class="action col-sm-2">
-                            <a href="edit-product.php" class="btn btn-primary">Chỉnh sửa</a>
-                            <button class="btn btn-primary">Xoá</button>
-                        </div>
-                    </div>
-                </div>
-                <div class = "game-list container">
-                    <div class = "game-card row">
-                        <img src="./images/user.png" class="rounded" alt="" height="100px" width="100px">
-                        <p class="title col-sm-3">AdventureTime</p>
-                        <p class="about col-sm-4">This game is about the adventure of Finn and Jake. Together, they discover distant land, protect Candy Kingdom from The Evil Ice-King. On their journey, they make friend with Vampire, Fire Princess and much more. </p>
-                        <p class="valueType col-sm-1">0</p>
-                        <div class="action col-sm-2">
-                            <a href="edit-product.php" class="btn btn-primary">Chỉnh sửa</a>
-                            <button class="btn btn-primary">Xoá</button>
-                        </div>
-                    </div>
-                </div>
-                <div class = "game-list container">
-                    <div class = "game-card row">
-                        <img src="./images/user.png" class="rounded" alt="" height="100px" width="100px">
-                        <p class="title col-sm-3">AdventureTime</p>
-                        <p class="about col-sm-4">This game is about the adventure of Finn and Jake. Together, they discover distant land, protect Candy Kingdom from The Evil Ice-King. On their journey, they make friend with Vampire, Fire Princess and much more. </p>
-                        <p class="valueType col-sm-1">0</p>
-                        <div class="action col-sm-2">
-                            <a href="edit-product.php" class="btn btn-primary">Chỉnh sửa</a>
-                            <button class="btn btn-primary">Xoá</button>
-                        </div>
-                    </div>
-                </div>
-                <div class = "game-list container">
-                    <div class = "game-card row">
-                        <img src="./images/user.png" class="rounded" alt="" height="100px" width="100px">
-                        <p class="title col-sm-3">AdventureTime</p>
-                        <p class="about col-sm-4">This game is about the adventure of Finn and Jake. Together, they discover distant land, protect Candy Kingdom from The Evil Ice-King. On their journey, they make friend with Vampire, Fire Princess and much more. </p>
-                        <p class="valueType col-sm-1">0</p>
-                        <div class="action col-sm-2">
-                            <a href="edit-product.php" class="btn btn-primary">Chỉnh sửa</a>
-                            <button class="btn btn-primary">Xoá</button>
-                        </div>
-                    </div>
-                </div>
+                <p>Quản lý sản phẩm</p>                   
+                <?php
+                    while($productrow = mysqli_fetch_array($productresult,MYSQLI_ASSOC)){
+                        $path2Img="../assets/img/user.png";
+                        if ($productrow['picturePath'] != NULL){
+                            $path2Img=$productrow['picturePath'];
+                        }
+                        $title=htmlspecialchars($productrow['name']);
+                        $about=htmlspecialchars($productrow['about']);
+                        $prodType=htmlspecialchars($productrow['ProductType']);
+                        echo "
+                        <div class = \"game-list container\">
+                            <div class = \"game-card row\">
+                                <img src=\"../Service/{$path2Img}\" class=\"rounded\" alt=\"\" height=\"100px\" width=\"100px\">
+                                <p class=\"title col-sm-3\">{$title}</p>
+                                <p class=\"about col-sm-4\">{$about}</p>
+                                <p class=\"valueType col-sm-1\">{$prodType}</p>
+                                <div class=\"action col-sm-2\">
+                                <form action=\"edit-product.php\" method=\"GET\">
+                                    <input name=\"productID\" type=\"text\"  hidden value=\"{$productrow['productID']}\">
+                                    <button class=\"btn btn-primary\">Chỉnh sửa</button>
+                                </form>
+                                <form action=\"\" method=\"POST\">
+                                    <input name=\"productID\" type=\"text\"  hidden value=\"{$productrow['productID']}\">
+                                    <button class=\"btn btn-primary\">Xoá</button>
+                                </form>
+                                </div>
+                            </div>
+                        </div>";
+                    }
+                    ?>   
                 <div class="add-btn container center">
                     <a href="add-product.php" class="btn btn-primary"> Thêm Sản Phẩm</a>
                 </div>
             </div>
-            
         </div>
     </div>
-
 
     <footer>
         <div class="footer-page">

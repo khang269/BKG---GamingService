@@ -2,22 +2,53 @@
     include('../phpscripts/connection.php');  
     $failstate = "";
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        
-        if (isset($_POST['commentID'])) {
-            $sql = "DELETE FROM comment WHERE commentID=".$_POST['commentID'];
+    // Random string function
+    function generateRandomString($length = 10) {
+        return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
+    }
 
-            if ($con->query($sql) === TRUE) {
-                echo "<script>alert('Comment deleted successfully');</script>";
-            } else {
-                echo "Error deleting comment: " . $con->error;
-            }
+    
+    if($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION['userType']==1){
+
+        if(isset($_POST["productType"]))
+        {
+            $productType = htmlspecialchars($_POST["productType"]);
         }
-        else {
-            $commentcontent = htmlspecialchars($_POST['comment']);
-            $submitsql = $sql = "INSERT INTO comment (userName, productID, Content)
-            VALUES ('$name','$productID','$commentcontent')";
-            $con->query($submitsql);
+    
+        $sql = "SELECT * FROM products WHERE productType = $productType";
+        $result = mysqli_query($con, $sql);  
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
+        if ($result->num_rows === 1) {
+            die();
+        }    
+
+        if (isset($_POST['submit'])) {
+            $name= htmlspecialchars($_POST['productName']);
+            $prodInfo= htmlspecialchars($_POST['productInfo']);
+            $type= htmlspecialchars($_POST['productType']);
+            $sql = "INSERT INTO game (name, picturePath, about, ProductType) VALUES ('{$name}', '', '{$prodInfo}','{$type}')";
+            
+            // Update profile info
+            if(file_exists($_FILES['file']['tmp_name'])) {
+                echo "Herrrrrrrr";
+                $info = pathinfo($_FILES["file"]["name"]);
+                $ext = $info['extension']; // get the extension of the file
+                if(in_array(strtolower($ext) , array('png', 'jpg', 'jpeg')))
+                {
+                    $newname = "images/".generateRandomString().".".$ext; 
+                    $target = $_SERVER['DOCUMENT_ROOT'].'Service/'.$newname;
+                    if (move_uploaded_file( $_FILES['file']['tmp_name'], $target))
+                    {
+                        $sql="INSERT INTO game (name, picturePath, about, ProductType) VALUES ('{$name}', '{$newname}', '{$prodInfo}','{$type}')";
+                    }
+                }
+            }
+            
+            if ($con->query($sql) === TRUE) {
+                echo "<script>alert('Product added successfully');</script>";
+            } else {
+                echo "Error adding product: " . $con->error;
+            }
         }
     }
 
@@ -141,19 +172,17 @@
                     <div class="col-lg-4">
                         <div class="product-pic-div pic-div">
                             <img src="./images/user.png" alt="#" id="photo">
-                            <input type="file" id="file">
+                            <input type="file" name="file" id="file">
                             <label for="file" name="file" id="uploadBtn">Chọn ảnh</label>
                         </div>
                         <script src="loadImage.js"></script>
-
                     </div>
                 </div>
                 <div class="center">
-                    <button class="btn btn-primary">Thêm</button>
+                <button type="submit" name="submit" value="Add" class="btn btn-primary">Thêm</button>
                 </div>
             </form>
         </div>
-
     </div>
 
 
