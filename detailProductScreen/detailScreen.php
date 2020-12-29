@@ -20,7 +20,8 @@
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         
         if (isset($_POST['commentID'])) {
-            $sql = "DELETE FROM comment WHERE commentID='$_POST['commentID']'";
+            $id = $_POST['commentID'];
+            $sql = "DELETE FROM comment WHERE commentID='$id'";
 
             if ($con->query($sql) === TRUE) {
                 echo "<script>alert('Comment deleted successfully');</script>";
@@ -96,6 +97,9 @@
                     <div class="col-sm-8 product-description">
                         <h1><?php echo "{$row['name']}"; ?></h1>
                         <p> <?php echo "{$row['about']}" ?></p>
+                    </div>
+                    <div class="embed-responsive w-50 mx-auto embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src=<?php echo "{$row['videoPath']}"; ?> allowfullscreen></iframe>
                     </div>
                 </div>
               </div>

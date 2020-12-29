@@ -28,7 +28,7 @@
                 $_SESSION['name'] = $username;
                 $_SESSION['profilePic'] = $rows["profilePic"];;
                 $_SESSION['userType'] = $rows["userType"];
-                header('Location: ..\index.php');
+                header('Location: ..\index\index.php');
                 $failstate = "";
             }  
             else{  
