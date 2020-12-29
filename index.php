@@ -71,8 +71,8 @@
                         '.$_SESSION['name'].'
                         </button>
                         <div class="dropdown-menu">
-                          <a class="dropdown-item" href="../profile-manage/profile.php">Profile</a>
-                          <a class="dropdown-item" href="../phpscripts/logout.php">Logout</a>
+                          <a class="dropdown-item" href="./profile-manage/profile.php">Profile</a>
+                          <a class="dropdown-item" href="./phpscripts/logout.php">Logout</a>
                         </div>
                     </div>
                     ';
