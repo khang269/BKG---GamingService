@@ -25,6 +25,19 @@
                                 <a class="dropdown-item" href="../contact/contact.php">Văn Phòng</a>
                             </div>
                         </li>
+                        <?php 
+                        if (isset($_SESSION['userType'])) { 
+                            if ($_SESSION['userType']==1) {
+                                echo '
+                                <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" href="../admin-manage/admin-screen.php" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="../admin-manage/admin-screen.php">Hồ sơ</a>
+                                    <a class="dropdown-item" href="../admin-manage/product-list-screen.php">Quản lí sản phẩm</a>
+                                </li>';
+                            }
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
