@@ -7,7 +7,12 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $profilePic=0;
-    $sql = "UPDATE user SET FullName='".$_POST["fullName"]."', Email='".$_POST["email"]."', phoneNumber='".$_POST["phone"]."',  address='".$_POST["address"]."' WHERE userName='".$_SESSION['name']."';";
+    $fullname=htmlspecialchars($_POST['fullName']);
+    $email=htmlspecialchars($_POST['email']);
+    $phone=htmlspecialchars($_POST['phone']);
+    $address=htmlspecialchars($_POST['address']);
+    $sql = "UPDATE user SET FullName='{$fullname}', Email='{$email}', phoneNumber='$phone',  address='$address' WHERE userName='".$_SESSION['name']."';";
+    $newname=$_SESSION['profilePic'];
     if(file_exists($_FILES['file']['tmp_name'])) {
         $info = pathinfo($_FILES["file"]["name"]);
         $ext = $info['extension']; // get the extension of the file
@@ -18,14 +23,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $target = $_SERVER['DOCUMENT_ROOT'].'profileImages/'.$newname;
             if (move_uploaded_file( $_FILES['file']['tmp_name'], $target))
             {
-                $sql="UPDATE user SET FullName='".$_POST["fullName"]."', Email='".$_POST["email"]."', phoneNumber='".$_POST["phone"]."',  address='".$_POST["address"]."', profilePic='".$newname."' WHERE userName='".$_SESSION['name']."';";
-                $_SESSION["profilePic"] = $newname;
+                $sql = "UPDATE user SET FullName='{$fullname}', Email='{$email}', phoneNumber='$phone',  address='$address', profilePic='$newname' WHERE userName='".$_SESSION['name']."';";
+                
             }
         }
     // Update profile info
     }
+    
     if ($con->query($sql) === TRUE) {
         echo "<script>alert('Profile updated!')</script>";
+        $_SESSION['fullName']= $fullname;
+        $_SESSION["profilePic"] = $newname;
     } else {
         echo "Error updating record: " . $con->error;
     }
