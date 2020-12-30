@@ -28,7 +28,8 @@
             $name= htmlspecialchars($_POST['productName']);
             $prodInfo= htmlspecialchars($_POST['productInfo']);
             $type= htmlspecialchars($_POST['productType']);
-            $sql = "INSERT INTO game (name, picturePath, about, ProductType) VALUES ('{$name}', '', '{$prodInfo}','{$type}')";
+            $videoPath= htmlspecialchars($_POST['videoPath']);
+            $sql = "INSERT INTO game (name, picturePath, about, videoPath, ProductType) VALUES ('{$name}', '', '{$prodInfo}','{$videoPath}','{$type}')";
             
             // Update profile info
             if(file_exists($_FILES['file']['tmp_name'])) {
@@ -41,7 +42,7 @@
                     $target = $_SERVER['DOCUMENT_ROOT'].'Service/'.$newname;
                     if (move_uploaded_file( $_FILES['file']['tmp_name'], $target))
                     {
-                        $sql="INSERT INTO game (name, picturePath, about, ProductType) VALUES ('{$name}', '{$newname}', '{$prodInfo}','{$type}')";
+                        $sql="INSERT INTO game (name, picturePath, about, videoPath, ProductType) VALUES ('{$name}', '{$newname}', '{$prodInfo}', '{$videoPath}','{$type}')";
                     }
                 }
             }
@@ -138,6 +139,14 @@
                                 </div>
                                 <div class="value col-sm-8">
                                     <textarea class="form-control" name="productInfo" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="element row">
+                                <div class="label col-sm-3">
+                                    Link video giới thiệu.
+                                </div>
+                                <div class="value col-sm-8">
+                                    <input type="text" name="videoPath" class="form-control">
                                 </div>
                             </div>
                             <div class="element row">

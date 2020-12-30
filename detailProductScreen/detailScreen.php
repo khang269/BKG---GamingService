@@ -18,27 +18,28 @@
     }
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+
         
         if (isset($_POST['commentID'])) {
             $id = $_POST['commentID'];
             $sql = "DELETE FROM comment WHERE commentID='$id'";
 
-            if ($con->query($sql) === TRUE) {
-                echo "<script>alert('Comment deleted successfully');</script>";
-            } else {
-                echo "Error deleting comment: " . $con->error;
-            }
+            header('Location: ./detailScreen.php');
+            return;
         }
         else {
             $commentcontent = htmlspecialchars($_POST['comment']);
             $submitsql = $sql = "INSERT INTO comment (userName, productID, Content)
             VALUES ('$name','$productID','$commentcontent')";
             $con->query($submitsql);
+            header('Location: ./detailScreen.php');
+            return;
         }
     }
 
     $commentsql = "SELECT * FROM comment WHERE productID = $productID";
     $commentresult = mysqli_query($con, $commentsql); 
+    
 ?>
 
 <!DOCTYPE html>
@@ -123,10 +124,18 @@
                                     <button class="btn btn-primary float-right" type="submit" id="btn" onclick="">Submit</button>
                                     ';
                                 }else{
-                                    echo '
-                                    <input name="comment" type="text" class="form-control" rows="2" id="comment" placeholder="..." ></input>
-                                    <button class="btn btn-primary float-right" type="submit" id="btn" onclick="">Submit</button>
-                                    ';
+                                    if($_SESSION['commentState'] == 1){
+                                        echo '
+                                            <input name="comment" type="text" class="form-control" rows="2" id="comment" placeholder="Nhập bình luận tại đây" ></input>
+                                            <button class="btn btn-primary float-right" type="submit" id="btn" onclick="">Submit</button>
+                                            ';
+                                    }
+                                    else{
+                                        echo '
+                                        <input name="comment" type="text" class="form-control" rows="2" id="comment" placeholder="Tài khoản của bạn đã bị cấm bình luận bởi admin" ></input>
+                                        ';
+                                    }
+                                    
                                 }
                             ?>
                         </form>

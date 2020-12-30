@@ -13,4 +13,8 @@
     if(!isset($_SESSION['loggedin'])){
         $_SESSION['loggedin'] = FALSE;
     }
+
+    if(!isset($_SESSION['commentState'])){
+        $_SESSION['loggedin'] = 1;
+    }
 ?>  

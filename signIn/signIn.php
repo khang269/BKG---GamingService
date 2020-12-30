@@ -29,6 +29,7 @@
                 $_SESSION['fullName'] = $rows["FullName"];
                 $_SESSION['profilePic'] = $rows["profilePic"];;
                 $_SESSION['userType'] = $rows["userType"];
+                $_SESSION['commentState'] = $rows["commentState"];
                 header('Location: ..\index\index.php');
                 $failstate = "";
             }  

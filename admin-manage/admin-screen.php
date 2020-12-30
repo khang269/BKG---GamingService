@@ -1,6 +1,42 @@
 <?php
     include('../phpscripts/connection.php');  
-    $failstate = "";
+    
+    if(!isset($_SESSION['userType'])||($_SESSION['userType'] === 0)){
+        header('Location: ../signIn/signIn.php');
+    }
+
+    $sql = "SELECT * FROM user WHERE userType = '0'";
+    $result = mysqli_query($con, $sql);   
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        
+        if (isset($_POST['banName'])) {
+            $id = $_POST['banName'];
+            $bansql = "DELETE FROM comment WHERE userName='$id'";
+            $con->query($bansql);
+            
+            $bansql = "DELETE FROM user WHERE userName='$id'";
+            $con->query($bansql);
+            header('Location: ./admin-screen.php');
+            return;
+        }
+
+        if(isset($_POST['nocommentName'])){
+            $id = $_POST['nocommentName'];
+            $bansql = "UPDATE user SET commentState = 0 WHERE userName='$id'";
+            $con->query($bansql);
+            header('Location: ./admin-screen.php');
+            return;
+        }
+
+        if(isset($_POST['allowName'])){
+            $id = $_POST['allowName'];
+            $bansql = "UPDATE user SET commentState = 1 WHERE userName='$id'";
+            $con->query($bansql);
+            header('Location: ./admin-screen.php');
+            return;
+        }
+    }
 
 ?>
 
@@ -70,16 +106,58 @@
                 <h4>Hồ sơ</h4>
                 <p>Quản lý hồ sơ</p>
                 <div class = "user-list container">
-                    <div class = "user-card row">
-                        <img src="./images/user.png" class="rounded-circle" alt="" height="50px" width="50px">
-                        <p class="userName col-sm-2">ANguyen</p>
-                        <p class="name col-sm-2">Nguyen van A</p>
-                        <p class="phoneNumber col-sm-2">0395540052</p>
-                        <div class="action col-sm-3">
-                            <a href="edit-user.php" class="btn btn-primary">Chỉnh sửa</a>
-                            <button class="btn btn-primary">Cấm comment</button>
-                        </div>
-                    </div>
+                    <?php
+                        while($row =  mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                            if ($_SESSION["userType"] == 1) {
+                                $banBtn = '
+                                <form id="BanForm"  action="" method="POST" class="delete-comment">
+                                    <input name="banName" type="text"  hidden value="'.$row['userName'].' ">
+                                    <button class="btn btn-danger float-right" type="submit" id="btn" onclick="">Ban Account</button>
+                                </form>';
+                                
+                                $noComment =  '
+                                <form id="nocommentForm"  action="" method="POST" class="delete-comment">
+                                    <input name="nocommentName" type="text"  hidden value="'.$row['userName'].' ">
+                                    <button class="btn btn-danger float-right" type="submit" id="btn" onclick="">No comment</button>
+                                </form>';
+
+                                $allowComment = '
+                                <form id="allowForm"  action="" method="POST" class="delete-comment">
+                                    <input name="allowName" type="text"  hidden value="'.$row['userName'].' ">
+                                    <button class="btn btn-primary float-right" type="submit" id="btn" onclick="">Allow comment</button>
+                                </form>';
+                            }
+                            
+                            if($row['commentState'] == 1){
+                                echo "
+                                <div class = \"user-card row\">
+                                    <img src=\"..\\profileImages\\{$row['profilePic']}\" class=\"rounded-circle\" alt=\"\" height=\"50px\" width=\"50px\">
+                                    <p class=\"userName col-sm-2\">{$row['userName']}</p>
+                                    <p class=\"name col-sm-2\">{$row['FullName']}</p>
+                                    <p class=\"phoneNumber col-sm-2\">{$row['phoneNumber']}</p>
+                                    <div class=\"action col-sm-3\">
+                                        {$banBtn}
+                                        {$noComment}
+                                    </div>
+                                </div>
+                                ";
+                            }
+                            else{
+                                echo "
+                                <div class = \"user-card row\">
+                                    <img src=\"..\\profileImages\\{$row['profilePic']}\" class=\"rounded-circle\" alt=\"\" height=\"50px\" width=\"50px\">
+                                    <p class=\"userName col-sm-2\">{$row['userName']}</p>
+                                    <p class=\"name col-sm-2\">{$row['FullName']}</p>
+                                    <p class=\"phoneNumber col-sm-2\">{$row['phoneNumber']}</p>
+                                    <div class=\"action col-sm-3\">
+                                        {$banBtn}
+                                        {$allowComment}
+                                    </div>
+                                </div>
+                                ";
+                            }
+                        }
+                    ?>
                     
                     
                 </div>

@@ -19,8 +19,10 @@
             $name= htmlspecialchars($_POST['productName']);
             $prodInfo= htmlspecialchars($_POST['productInfo']);
             $type= htmlspecialchars($_POST['productType']);
-            
+            $videoPath= htmlspecialchars($_POST['videoPath']);
+
             // Update profile info
+            $sql = "UPDATE game SET name='{$name}', about='{$prodInfo}',videoPath='{$videoPath}', ProductType='{$type}' WHERE productID={$productID};";
             if(file_exists($_FILES['file']['tmp_name'])) {
                 $info = pathinfo($_FILES["file"]["name"]);
                 $ext = $info['extension']; // get the extension of the file
@@ -30,11 +32,11 @@
                     $target = $_SERVER['DOCUMENT_ROOT'].'Service/'.$newname;
                     if (move_uploaded_file( $_FILES['file']['tmp_name'], $target))
                     {
-                        $sql = "UPDATE game SET name='{$name}', picturePath='{$newname}', about='{$prodInfo}', ProductType='{$type}' WHERE productID={$productID};";
+                        $sql = "UPDATE game SET name='{$name}', picturePath='{$newname}' ,about='{$prodInfo}',videoPath='{$videoPath}', ProductType='{$type}' WHERE productID={$productID};";
                     }
                 }
             }
-            $sql = "UPDATE game SET name='{$name}', about='{$prodInfo}', ProductType='{$type}' WHERE productID={$productID};";
+
             if ($con->query($sql) === TRUE) {
                 echo "<script>alert('Product edited successfully');</script>";
             } else {
@@ -136,6 +138,14 @@
                                 </div>
                                 <div class="value col-sm-8">
                                     <?php echo '<textarea class="form-control" name="productInfo" rows="3">'.$row['about'].'</textarea>'; ?>
+                                </div>
+                            </div>
+                            <div class="element row">
+                                <div class="label col-sm-3">
+                                    Link Video Giới Thiệu:
+                                </div>
+                                <div class="value col-sm-8">
+                                    <?php echo '<input type="text" name="videoPath" class="form-control" value="'.$row['videoPath'].'">'; ?>
                                 </div>
                             </div>
                             <div class="element row">
