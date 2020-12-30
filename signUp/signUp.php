@@ -58,7 +58,7 @@
     <body>
         <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
             <div class="container">
-                <a href="#" class="navbar-brand"><img src="images/logo2.png" alt=""></a>
+                <a href="../index" class="navbar-brand"><img src="images/logo2.png" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navResponsive">
                     <span class="navbar-toggler-icon"></span>
                 </button>

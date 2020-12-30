@@ -28,9 +28,9 @@
         <div class="header">
             <div class="container">
                 <h1>Kết nối</h1>
-                <div class="row linknav justify-content-center">
+                <div class="row linknav">
                     <i class="glyphicon glyphicon-home icon"></i>
-                    <a class="mainnav" href="../">Trang Chủ</a>
+                    <a class="mainnav" href="../index">Trang Chủ</a>
                     <a class="second-nav" href="#">Kết nối</a>
                     <a href="#">Văn Phòng</a>
                 </div>

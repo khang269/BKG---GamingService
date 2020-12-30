@@ -26,6 +26,7 @@
             if($count == 1){  
                 $_SESSION['loggedin'] = TRUE;
                 $_SESSION['name'] = $username;
+                $_SESSION['fullName'] = $rows["FullName"];
                 $_SESSION['profilePic'] = $rows["profilePic"];;
                 $_SESSION['userType'] = $rows["userType"];
                 header('Location: ..\index\index.php');
@@ -55,7 +56,7 @@
     <body>
         <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
             <div class="container">
-                <a href="#" class="navbar-brand"><img src="images/logo2.png" alt=""></a>
+                <a href="../index" class="navbar-brand"><img src="images/logo2.png" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navResponsive">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -124,14 +125,9 @@
                 </h4>
 
                 <div class="input-group mb-3">
-                    <input type="checkbox" data-toggle="toggle" data-onstyle="primary">
-                    <p class="col-sm-3 signInlink"> Is Admin?</p>
-                    
-                </div>
-                <div class="input-group mb-3">
                     <input class="btn btn-primary btn-block" type="submit" id="btn"></input>
                 </div>
-                <div class="input-group mb-3 row">
+                <!-- <div class="input-group mb-3 row">
                     <a href="#" class="btn btn-link col-sm-4 signInlink" >Quên mật khẩu?</a>
                 </div>
 
@@ -144,9 +140,9 @@
                         <img src="images/google.svg" alt="#">
                         Google
                     </button>
-                </div>
+                </div> -->
 
-                <div class="input-group mb-3 row">
+                <div class="input-group mb-3 row inkwellinl">
                     <span class="container col-sm-6"><p class="have-account">Bạn không có tài khoản?</p></span>
                     <a href="../signUp/signUp.php" class="btn btn-link col-sm-4 signInlink" >Đăng Ký</a>
                 </div>

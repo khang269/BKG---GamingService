@@ -28,7 +28,7 @@
             $_SESSION['name'] = $_POST['username'];
             $_SESSION['userType'] = $row["userType"];
             echo 'Welcome ' . $_SESSION['name'] . '!';
-            header('Location: ..\index.php');
+            header('Location: ..\index\index.php');
         }  
         else{  
             header('Location: ..\signIn\signIn.php');
