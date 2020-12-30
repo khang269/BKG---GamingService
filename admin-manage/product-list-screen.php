@@ -12,7 +12,10 @@
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             if (isset($_POST['productID'])) {
+                $commentsql =  "DELETE FROM comment WHERE productID='$_POST[productID]'";
+
                 $sql = "DELETE FROM game WHERE productID='$_POST[productID]'";
+                $con->query($commentsql);
 
                 if ($con->query($sql) === TRUE) {
                     echo "<script>alert('Product deleted successfully');</script>";
