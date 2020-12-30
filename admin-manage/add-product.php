@@ -3,6 +3,10 @@
     $failstate = "";
     // error_reporting(0);
 
+    if($_SESSION['userType'] != 1 || !isset($_SESSION['userType'])){
+        header('Location: ..\index\index.php');
+    }
+
     // Random string function
     function generateRandomString($length = 10) {
         return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
@@ -39,7 +43,7 @@
                 if(in_array(strtolower($ext) , array('png', 'jpg', 'jpeg')))
                 {
                     $newname = "images/".generateRandomString().".".$ext; 
-                    $target = $_SERVER['DOCUMENT_ROOT'].'Service/'.$newname;
+                    $target = $_SERVER['DOCUMENT_ROOT'].'/Assignment2/Service/'.$newname;
                     if (move_uploaded_file( $_FILES['file']['tmp_name'], $target))
                     {
                         $sql="INSERT INTO game (name, picturePath, about, videoPath, ProductType) VALUES ('{$name}', '{$newname}', '{$prodInfo}', '{$videoPath}','{$type}')";

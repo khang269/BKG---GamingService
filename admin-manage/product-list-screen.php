@@ -2,6 +2,11 @@
     include('../phpscripts/connection.php');  
     $failstate = "";
     error_reporting(0);
+
+    if($_SESSION['userType'] != 1 || !isset($_SESSION['userType'])){
+        header('Location: ..\index\index.php');
+    }
+
     if ($_SESSION['userType']==1) {
         
         if($_SERVER["REQUEST_METHOD"] == "POST"){

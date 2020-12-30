@@ -12,19 +12,17 @@
     $sql = "SELECT * FROM game WHERE productID = $productID";
     $result = mysqli_query($con, $sql);  
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
-    if ($result->num_rows < 1) {
-        echo "here";
-        die();
-    }
+
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         
         if (isset($_POST['commentID'])) {
             $id = $_POST['commentID'];
-            $sql = "DELETE FROM comment WHERE commentID='$id'";
+            $deletesql = "DELETE FROM comment WHERE commentID='$id'";
+            $con->query($deletesql);
 
-            header('Location: ./detailScreen.php');
+            header('Location: ../detailProductScreen/detailScreen.php?productID='.$productID);
             return;
         }
         else {
@@ -32,7 +30,8 @@
             $submitsql = $sql = "INSERT INTO comment (userName, productID, Content)
             VALUES ('$name','$productID','$commentcontent')";
             $con->query($submitsql);
-            header('Location: ./detailScreen.php');
+            
+            header('Location: ../detailProductScreen/detailScreen.php?productID='.$productID);
             return;
         }
     }
@@ -142,6 +141,12 @@
                         <?php
                         while($commentrow = mysqli_fetch_array($commentresult,MYSQLI_ASSOC)){
                             $deleteBtn = "";
+                            $username = $commentrow['userName'];
+                            $commentusersql = "SELECT profilePic FROM user WHERE userName = '$username'";
+                            $temp_result = $con->query($commentusersql);
+                            $temp_row = mysqli_fetch_array($temp_result,MYSQLI_ASSOC);
+                            $proPic = $temp_row['profilePic'];
+
                             if ($_SESSION["userType"] == 1) {
                                 $deleteBtn = '
                                 <form id="deleteForm"  action="" method="POST" class="delete-comment">
@@ -151,7 +156,7 @@
                             }
                             echo "<div class=\"comment-card row\">
                             <div class=\"col-sm-1\">
-                                <img src=\"images/user.png\" class=\"rounded-circle\" alt=\"\" height=\"50px\" width=\"50px\">
+                                <img src=\"..\\profileImages\\{$proPic}\" class=\"rounded-circle\" alt=\"\" height=\"50px\" width=\"50px\">
                             </div>
                             <div class=\"col-sm-11\">
                                 <h4>{$commentrow['userName']}</h4>

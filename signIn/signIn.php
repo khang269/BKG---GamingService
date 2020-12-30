@@ -10,7 +10,6 @@
         $username = $_POST['user'];  
         $password = $_POST['pass'];  
         $loginstate = "Fill in password";
-        $_SESSION['loggedin'] = FALSE;
           
             //to prevent from mysqli injection  
             $username = stripcslashes($username);  
@@ -64,7 +63,7 @@
                 <div class="collapse navbar-collapse" id="navResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a href="..//index/index.php" class="nav-link">Home</a>
+                            <a href="../index/index.php" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a href="../introduction/introduction.php" class="nav-link">Chúng tôi</a>
@@ -174,23 +173,20 @@
         <script>  
             function validation()  
             {  
-                var id=document.f1.user.value;  
-                var ps=document.f1.pass.value;  
-                if(id.length=="" && ps.length=="") {  
-                    alert("User Name and Password fields are empty");  
-                    return false;  
-                }  
-                else  
-                {  
-                    if(id.length=="") {  
+                var id=document.getElementById('user').value;  
+                var ps=document.getElementById('pass').value;  
+
+                
+                    if(id.length==0) {  
                         alert("User Name is empty");  
                         return false;  
                     }   
-                    if (ps.length=="") {  
-                    alert("Password field is empty");  
-                    return false;  
+                    if (ps.length==0) {  
+                        alert("Password field is empty");  
+                        return false;  
                     }  
-                }                             
+
+                    return true;                           
             }  
         </script>      
     </body>

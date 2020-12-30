@@ -8,7 +8,10 @@
 
 <?php
     include('../phpscripts/connection.php');  
-    $failstate = "";
+    
+    if(!isset($failstate)){
+        $failstate = "";
+    }
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         if ( !isset($_POST['user'], $_POST['pass']) ) {
@@ -28,15 +31,17 @@
             $username = mysqli_real_escape_string($con, $username);  
             $password = mysqli_real_escape_string($con, $password);  
           
-           $sql = "INSERT INTO user (userName, Pass, Email, userType, FullName, PhoneNumber)
+            $sql = "INSERT INTO user (userName, Pass, Email, userType, FullName, PhoneNumber)
             VALUES ('$username', '$password', '$email', 0, '$fullname', '$phone')";
             
     
             if($con->query($sql) === TRUE){  
+                $failstate = "";
                 header('Location: ../signIn/signIn.php');
             }  
             else{  
                 $failstate = "Username already exist";
+                header('Location: ./signUp.php');
             }
     }
 ?>
@@ -112,7 +117,6 @@
             <form id="f1" action="" method="post" class="signUpBackground container col-lg-5">
 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Họ và Tên lót">
                     <input id="name" name="fullname" type="text" class="form-control" placeholder="Tên">
                 </div>
                 <div class="input-group mb-3">
@@ -166,5 +170,35 @@
                 </div>
             </div>
         </footer>
+
+        <script>  
+            function validation()  
+            {  
+                var id=document.getElementById('user').value;  
+                var ps=document.getElementById('pass').value;   
+                var email=document.getElementById('email').value;
+                var passcheck = document.getElementById('passcheck').value;
+
+                if(id.length==0) {  
+                    alert("User Name is empty");  
+                    return false;  
+                }   
+                if (ps.length==0) {  
+                    alert("Password field is empty");  
+                    return false;  
+                }  
+                if (email.length < 6) {  
+                    alert("Password field must be higher than 6 character");  
+                    return false;  
+                }  
+                
+                if(passcheck != ps){
+                    alert("Your password check does not match");  
+                    return false;  
+                }
+
+                return true;
+            }  
+        </script>
     </body>
  </html>

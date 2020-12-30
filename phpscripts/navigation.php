@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
             <div class="container">
-                <a href="../index" class="navbar-brand"><img src="images/logo2.png" alt="logo-trademark"></a>
+                <a href="../index/index.php" class="navbar-brand"><img src="images/logo2.png" alt="logo-trademark"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navResponsive">
                     <span class="navbar-toggler-icon"></span>
                 </button>

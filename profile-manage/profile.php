@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         {
             $newname = "".$_SESSION['name'].".".$ext; 
 
-            $target = $_SERVER['DOCUMENT_ROOT'].'profileImages/'.$newname;
+            $target = $_SERVER['DOCUMENT_ROOT'].'/Assignment2/profileImages/'.$newname;
             if (move_uploaded_file( $_FILES['file']['tmp_name'], $target))
             {
                 $sql = "UPDATE user SET FullName='{$fullname}', Email='{$email}', phoneNumber='$phone',  address='$address', profilePic='$newname' WHERE userName='".$_SESSION['name']."';";

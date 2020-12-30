@@ -2,6 +2,10 @@
     include('../phpscripts/connection.php');  
     $failstate = "";
 
+    if($_SESSION['userType'] != 1 || !isset($_SESSION['userType'])){
+        header('Location: ..\index\index.php');
+    }
+
 ?>
 
 <!DOCTYPE html>

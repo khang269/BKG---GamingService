@@ -15,6 +15,6 @@
     }
 
     if(!isset($_SESSION['commentState'])){
-        $_SESSION['loggedin'] = 1;
+        $_SESSION['commentState'] = 1;
     }
 ?>  
