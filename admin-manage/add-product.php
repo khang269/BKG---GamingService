@@ -6,7 +6,7 @@
     if($_SESSION['userType'] != 1 || !isset($_SESSION['userType'])){
         header('Location: ..\index\index.php');
     }
-
+    
     // Random string function
     function generateRandomString($length = 10) {
         return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
@@ -20,10 +20,10 @@
             $productType = htmlspecialchars($_POST["productType"]);
         }
     
-        $sql = "SELECT * FROM game WHERE productType = $productType";
+        $sql = "SELECT * FROM products WHERE productType = $productType";
         $result = mysqli_query($con, $sql);  
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
-        if ($result->num_rows === 1) {
+        if ($result->num_rows  === 1) {
             die();
         }
         
@@ -37,20 +37,19 @@
             
             // Update profile info
             if(file_exists($_FILES['file']['tmp_name'])) {
-                echo "Herrrrrrrr";
                 $info = pathinfo($_FILES["file"]["name"]);
                 $ext = $info['extension']; // get the extension of the file
                 if(in_array(strtolower($ext) , array('png', 'jpg', 'jpeg')))
                 {
                     $newname = "images/".generateRandomString().".".$ext; 
-                    $target = $_SERVER['DOCUMENT_ROOT'].'/Assignment2/Service/'.$newname;
+                    $target = $_SERVER['DOCUMENT_ROOT'].'Assignment2/Service/'.$newname;
                     if (move_uploaded_file( $_FILES['file']['tmp_name'], $target))
                     {
                         $sql="INSERT INTO game (name, picturePath, about, videoPath, ProductType) VALUES ('{$name}', '{$newname}', '{$prodInfo}', '{$videoPath}','{$type}')";
                     }
                 }
             }
-            
+
             if ($con->query($sql) === TRUE) {
                 echo "<script>alert('Product added successfully');</script>";
             } else {

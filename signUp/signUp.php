@@ -21,7 +21,7 @@
     
         $username = $_POST['user'];
         $fullname = $_POST['fullname']  ;
-        $password = $_POST['pass'];  
+        $password = md5($_POST['pass']);  
         $email = $_POST['email'];
         $phone = $_POST['phone'];
           

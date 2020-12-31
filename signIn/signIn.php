@@ -8,7 +8,7 @@
             exit('Please fill both the username and password fields!');
         }
         $username = $_POST['user'];  
-        $password = $_POST['pass'];  
+        $password = md5($_POST['pass']);  
         $loginstate = "Fill in password";
           
             //to prevent from mysqli injection  
